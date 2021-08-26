@@ -30,16 +30,24 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role_id === 1;
         });
 
-        Gate::define('user', function ($user){
+        Gate::define('guide', function ($user){
             return $user->role_id === 2;
         });
 
-        Gate::define('adminOrUser', function ($user){
+        Gate::define('user', function ($user){
+            return $user->role_id === 3;
+        });
+
+        Gate::define('adminOrGuide', function ($user){
             return $user->role_id === 1 || $user->role_id === 2;
         });
 
+        Gate::define('adminOrUser', function ($user){
+            return $user->role_id === 1 || $user->role_id === 3;
+        });
+
         Gate::define('authCheck', function ($user){
-            return $user->role_id === 1 || $user->role_id === 2;
+            return $user->role_id === 1 || $user->role_id === 2 || $user->role_id === 3;
         });
     }
 }

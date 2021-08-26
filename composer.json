@@ -12,6 +12,7 @@
         "intervention/image": "^2.6",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
+        "srmklive/paypal": "~3.0",
         "stripe/stripe-php": "^7.92",
         "tymon/jwt-auth": "^1.0"
     },
