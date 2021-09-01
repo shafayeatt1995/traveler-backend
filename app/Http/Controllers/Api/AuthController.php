@@ -116,6 +116,7 @@ class AuthController extends Controller
 
         $user = new User();
         $user->name = $request->name;
+        $user->slug = Str::slug($request->name) . Str::random(3);
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->social_profile = json_encode(['facebook'=>'', 'twitter'=>'', 'instagram'=>'', 'whatsapp'=>'']);
@@ -134,6 +135,7 @@ class AuthController extends Controller
 
         $user = new User();
         $user->name = $request->name;
+        $user->slug = Str::slug($request->name) . Str::random(3);
         $user->email = $request->email;
         $user->role_id = $request->userType;
         $user->password = Hash::make($request->password);
@@ -151,6 +153,7 @@ class AuthController extends Controller
         ]);
         
         $user->name = $request->name;
+        $user->slug = Str::slug($request->name) . Str::random(3);
         $user->email = $request->email;
         $user->role_id = $request->userType;
         $user->save();
@@ -206,6 +209,7 @@ class AuthController extends Controller
         }
         
         $user->name = $request->name;
+        $user->slug = Str::slug($request->name) . Str::random(3);
         $user->image = $name;
         $user->social_profile = json_encode($request->socialProfile);
         $user->save();

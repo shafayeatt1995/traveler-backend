@@ -15,4 +15,9 @@ class Category extends Model
     {
         return $this->hasMany(Package::class);
     }
+    
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class);
+    }
 }

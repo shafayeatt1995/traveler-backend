@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Package;
 use App\Models\Place;
 use App\Models\Question;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -174,11 +175,12 @@ class PackageController extends Controller
     {
         $package = Package::where('slug', $slug)->with('category', 'user', 'questions', 'bookings')->first();
         if(isset($package)){
-            $questions = Question::where('package_id', $package->id)->with('user')->latest()->paginate(20);
+            $questions = Question::where('package_id', $package->id)->with('user')->latest()->paginate(15);
             $popularPackage = Package::inRandomOrder()->take(5)->get();
-            return response()->json(compact('package', 'popularPackage', 'questions'));
+            $categories = Category::orderBy('name')->get();
+            return response()->json(compact('package', 'popularPackage', 'questions', 'categories'));
         } else {
-            return response()->json(['package'=> null, 'questions'=> null, 'popularPackage'=> null, ], 200);
+            return response()->json(['package'=> null, 'questions'=> null, 'popularPackage'=> null, 'categories'=> null, ], 200);
         }
     }
 
@@ -192,5 +194,41 @@ class PackageController extends Controller
     {
         $package->status = $request->status;
         $package->save();
+    }
+
+    public function packages()
+    {
+        $packages = Package::latest()->paginate(15);
+        return response()->json(compact('packages'));
+    }
+
+    public function userPackages($slug)
+    {
+        $user = User::where('slug', $slug)->first();
+        if (isset($user)) {
+            $packages = Package::latest()->paginate(15);
+        } else {
+            $packages = null;
+        }
+        
+        return response()->json(compact('user', 'packages'));
+    }
+
+    public function categoryPackages($slug)
+    {
+        $category = Category::where('slug', $slug)->first();
+        if (isset($category)) {
+            $packages = Package::where('category_id', $category->id)->latest()->paginate(15);
+        } else {
+            $packages = null;
+        }
+        
+        return response()->json(compact('category', 'packages'));
+    }
+
+    public function destinationPackage()
+    {
+        $destinations = Place::with('packages')->withCount('packages')->orderBy('packages_count', 'desc')->get();
+        return response()->json(compact('destinations'));
     }
 }

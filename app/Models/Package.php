@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +11,11 @@ class Package extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'address', 'category_id', 'duration', 'excluded', 'group_size', 'ticket', 'images', 'included', 'overview', 'price', 'discount', 'min_booking_amount', 'return_date', 'start_date', 'tour_plan', 'vehicle', 'status'];
+    
+    public function scopeNotStart($query)
+    {
+        return $query->where('start_date', '>', Carbon::now());
+    }
 
     public function category()
     {

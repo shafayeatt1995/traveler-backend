@@ -65,6 +65,19 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::post('submit-booking', 'BookingController@submitBooking');
     Route::post('update-booking/{booking}', 'BookingController@updateBooking');
     Route::post('partial-payment', 'BookingController@partialPayment');
+
+    // Blog Related Route
+    Route::get('post', 'BlogController@index');
+    Route::post('create-post', 'BlogController@createPost');
+    Route::post('update-post/{blog}', 'BlogController@updatePost');
+    Route::post('delete-post/{blog}', 'BlogController@deletePost');
+
+    // Blog Comment Related Route
+    Route::get('comment/{id}', 'CommentController@comment');
+    Route::post('create-comment', 'CommentController@createComment');
+    Route::post('delete-comment/{comment}', 'CommentController@deleteComment');
+    Route::post('create-comment-replay', 'CommentController@createCommentReplay');
+    Route::post('delete-comment-replay/{comment_replay}', 'CommentController@deleteCommentReplay');
     
     //Guide Related Route
     Route::get('guide-request', 'GuideController@index');
@@ -75,22 +88,39 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::get('page', 'PageController@index');
     Route::post('create-page', 'PageController@createPage');
     Route::get('section-editor', 'PageController@sectionEditor');
+    Route::post('update-header', 'PageController@updateHeader');
     Route::post('update-achievement', 'PageController@updateAchievement');
     Route::post('update-review', 'PageController@updateReview');
-
+    Route::post('update-footer', 'PageController@updateFooter');
+    Route::post('add-slider-package', 'PageController@addSliderPackage');
+    Route::get('section-editor-package', 'PageController@sectionEditorPackage');
+    
 });
 
 //Auth Not Required Route List
 Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
+    // Get Site Ready Information
+    Route::get('start', 'AppController@start');
+    
     // Home Page Route
     Route::get('home', 'AppController@index');
+
+    // Package Related Route
+    Route::get('packages', 'PackageController@packages');
+    Route::get('user-packages/{slug}', 'PackageController@userPackages');
+    Route::get('category-packages/{slug}', 'PackageController@categoryPackages');
+    Route::get('destination-package', 'PackageController@destinationPackage');
 
     // Public Tour Package Related Route
     Route::get('package/{slug}', 'PackageController@singlePackage');
     
     // Booking Related Route
     Route::post('check-booking/', 'BookingController@checkBooking');
+    
 
-    // Get Site Ready Information
-    Route::get('start', 'AppController@start');
+    // Blog Related Route
+    Route::get('blog/{slug}', 'BlogController@post');
+    Route::get('blog-posts', 'BlogController@blogPosts');
+    Route::get('category-blog/{slug}', 'BlogController@categoryPost');
+    Route::get('user-blog/{slug}', 'BlogController@userPost');
 });

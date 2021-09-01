@@ -12,7 +12,7 @@ class QuestionController extends Controller
 {
     public function index($id)
     {
-        $questions = Question::where('package_id', $id)->with('user')->paginate(20);
+        $questions = Question::where('package_id', $id)->with('user')->latest()->paginate(15);
         return response()->json(compact('questions'));
     }
 
