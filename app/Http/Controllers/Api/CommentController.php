@@ -20,7 +20,7 @@ class CommentController extends Controller
     {
         $this->authorize('authCheck');
         $request->validate([
-            'message' => 'required|max:1000'
+            'message' => 'required|max:500'
         ]);
 
         $comment = new Comment();
@@ -34,7 +34,7 @@ class CommentController extends Controller
     {
         $this->authorize('authCheck');
         $request->validate([
-            'message' => 'required|max:1000'
+            'message' => 'required|max:500'
         ]);
         
         $replay = new CommentReplay();

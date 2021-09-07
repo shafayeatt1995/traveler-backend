@@ -174,7 +174,7 @@ class AuthController extends Controller
         $this->authorize('user');
         $request->validate([
             'phone' => 'required',
-            'message' => 'required|max:1000',
+            'message' => 'required|max:500',
         ]);
         
         $user = Auth::user();

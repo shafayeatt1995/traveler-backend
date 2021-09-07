@@ -16,8 +16,10 @@ class PageController extends Controller
 {
     public function index()
     {
-        $pages = Page::latest()->paginate(20);
-        return response()->json(compact('pages'));
+        $this->authorize('admin');
+        $about = Page::where('slug', 'about')->first();
+        $contact = Page::where('slug', 'contact')->first();
+        return response()->json(compact('about', 'contact'));
     }
 
     public function createPage(Request $request)
@@ -67,7 +69,11 @@ class PageController extends Controller
 
         $information = isset($find) ? $find : new Section();
         $information->name = 'header';
-        $information->info = json_encode(['phone'=> $request->phone, 'email'=>$request->email, 'image'=>$name]);
+        $information->info = json_encode([
+            'phone'=> $request->phone,
+            'email'=>$request->email,
+            'image'=>$name,
+        ]);
         $information->save();
     }
 
@@ -98,7 +104,11 @@ class PageController extends Controller
 
         $information = isset($find) ? $find : new Section();
         $information->name = 'achievement';
-        $information->info = json_encode(['title'=> $request->title, 'subTitle'=>$request->subTitle, 'achievements'=>$achievements]);
+        $information->info = json_encode([
+            'title'=> $request->title,
+            'subTitle'=>$request->subTitle,
+            'achievements'=>$achievements,
+        ]);
         $information->save();
     }
 
@@ -129,7 +139,11 @@ class PageController extends Controller
 
         $information = isset($find) ? $find : new Section();
         $information->name = 'review';
-        $information->info = json_encode(['title'=> $request->title, 'subTitle'=>$request->subTitle, 'reviews'=>$reviews]);
+        $information->info = json_encode([
+            'title'=> $request->title,
+            'subTitle'=>$request->subTitle,
+            'reviews'=>$reviews,
+        ]);
         $information->save();
     }
 
@@ -157,7 +171,16 @@ class PageController extends Controller
 
         $information = isset($find) ? $find : new Section();
         $information->name = 'footer';
-        $information->info = json_encode(['image'=>$name, 'message'=>$request->message, 'newsletterMessage'=> $request->newsletterMessage, 'copyright'=>$request->copyright, 'address'=> $request->address, 'social'=>$request->social, 'phone'=>$request->phone, 'email'=>$request->email]);
+        $information->info = json_encode([
+            'image'=>$name,
+            'message'=>$request->message,
+            'newsletterMessage'=> $request->newsletterMessage,
+            'copyright'=>$request->copyright,
+            'address'=> $request->address,
+            'social'=>$request->social,
+            'phone'=>$request->phone,
+            'email'=>$request->email,
+        ]);
         $information->save();
     }
 
@@ -170,5 +193,91 @@ class PageController extends Controller
         $information->name = 'homeSlider';
         $information->info = json_encode(['id'=>$request->activePackages]);
         $information->save();
+    }
+
+    public function updateAbout(Request $request)
+    {
+        $this->authorize('admin');
+        $request->validate([
+            'meta' => 'max:500'
+        ]);
+
+        foreach ($request->deleteMembers as $data) {
+            if (File::exists($data)) {
+                unlink($data);
+            }
+        }
+        
+        $members = $request->oldMembers;
+        foreach ($request->newMembers as $data) {
+            $path = 'images/pages/about/';
+            $name = $path . Str::random(3) . time() . '.' . explode('/', explode(':', substr($data['image'], 0, strpos($data['image'], ';')))[1])[1];
+    
+            if (!File::exists($path)) {
+                File::makeDirectory($path, $mode = 0777, true, true);
+            }
+    
+            Image::make($data['image'])->save($name);
+            
+            array_push($members, ['image'=>$name, 'name'=>$data['name'], 'designation'=>$data['designation']]);
+        }
+
+        $find = Page::where('slug', 'about')->first();
+
+        $page = isset($find) ? $find : new Page();
+        $page->name = 'About';
+        $page->slug = 'about';
+        $page->meta = $request->meta;
+        $page->page = json_encode([
+            'title'=>$request->title,
+            'subTitle'=>$request->subTitle,
+            'message'=>$request->message,
+            'members'=>$members,
+        ]);
+        $page->save();
+    }
+
+    public function updateContact(Request $request)
+    {
+        $this->authorize('admin');
+        $find = Page::where('slug', 'contact')->first();
+
+        $page = isset($find) ? $find : new Page();
+        $page->name = 'Contact';
+        $page->slug = 'contact';
+        $page->meta = $request->meta;
+        $page->page = $request->message;
+        $page->save();
+    }
+
+    public function updatefaq(Request $request)
+    {
+        $this->authorize('admin');
+        $find = Page::where('slug', 'faq')->first();
+
+        $page = isset($find) ? $find : new Page();
+        $page->name = 'FAQ';
+        $page->slug = 'faq';
+        $page->meta = $request->meta;
+        $page->page = json_encode($request->topics);
+        $page->save();
+    }
+
+    public function about()
+    {
+        $about = Page::where('slug', 'about')->first();
+        return response()->json(compact('about'));
+    }
+
+    public function contact()
+    {
+        $contact = Page::where('slug', 'contact')->first();
+        return response()->json(compact('contact'));
+    }
+
+    public function faq()
+    {
+        $faq = Page::where('slug', 'faq')->first();
+        return response()->json(compact('faq'));
     }
 }

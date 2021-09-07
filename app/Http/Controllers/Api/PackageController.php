@@ -34,7 +34,8 @@ class PackageController extends Controller
             'address' => 'required',
             'category_id' => 'required|numeric',
             'place_id' => 'required|numeric',
-            'duration' => 'required',
+            'duration_day' => 'required',
+            'duration_night' => 'required',
             'excluded' => 'required',
             'group_size' => 'required',
             'ticket' => 'required|numeric',
@@ -48,6 +49,16 @@ class PackageController extends Controller
             'tour_plan' => 'required',
             'vehicle' => 'required',
         ]);
+
+        $slug = Str::slug($request->name) . Str::random(2);
+        $path = 'images/package/thumbnail/';
+        $thumbnailName = $path . $slug . time() . '.' . explode('/', explode(':', substr($request->thumbnail, 0, strpos($request->thumbnail, ';')))[1])[1];
+
+        if (!File::exists($path)) {
+            File::makeDirectory($path, $mode = 0777, true, true);
+        }
+
+        Image::make($request->thumbnail)->fit(450, 300, function($constraint){$constraint->upsize();})->save($thumbnailName);
 
         $images = [];
         foreach ($request->images as $image) {
@@ -70,9 +81,11 @@ class PackageController extends Controller
         $package->place_id = $request->place_id;
         $package->name = $request->name;
         $package->slug = Str::slug($request->name) . Str::random(2);
+        $package->thumbnail = $thumbnailName;
         $package->images = json_encode($images);
         $package->address = $request->address;
-        $package->duration = $request->duration;
+        $package->duration_day = $request->duration_day;
+        $package->duration_night = $request->duration_night;
         $package->excluded = json_encode($request->excluded);
         $package->included = json_encode($request->included);
         $package->group_size = $request->group_size;
@@ -96,7 +109,8 @@ class PackageController extends Controller
             'address' => 'required',
             'category_id' => 'required|numeric',
             'place_id' => 'required|numeric',
-            'duration' => 'required',
+            'duration_day' => 'required',
+            'duration_night' => 'required',
             'excluded' => 'required',
             'group_size' => 'required',
             'ticket' => 'required|numeric',
@@ -122,6 +136,24 @@ class PackageController extends Controller
             }
         }
 
+        if(Str::substr($request->thumbnail, -Str::length($package->thumbnail)) !== $package->thumbnail){
+            if (File::exists($package->thumbnail)) {
+                unlink($package->thumbnail);
+            }
+
+            $slug = Str::slug($request->name) . Str::random(2);
+            $path = 'images/package/thumbnail/';
+            $thumbnailName = $path . $slug . time() . '.' . explode('/', explode(':', substr($request->thumbnail, 0, strpos($request->thumbnail, ';')))[1])[1];
+
+            if (!File::exists($path)) {
+                File::makeDirectory($path, $mode = 0777, true, true);
+            }
+
+            Image::make($request->thumbnail)->fit(450, 300, function($constraint){$constraint->upsize();})->save($thumbnailName);
+        }else{
+            $thumbnailName = $package->thumbnail;
+        }
+
         $images = $request->images;
         foreach ($request->new_images as $image) {
             $slug = Str::slug($request->name) . Str::random(2);
@@ -141,9 +173,11 @@ class PackageController extends Controller
         $package->category_id = $request->category_id;
         $package->place_id = $request->place_id;
         $package->name = $request->name;
+        $package->thumbnail = $thumbnailName;
         $package->images = json_encode($images);
         $package->address = $request->address;
-        $package->duration = $request->duration;
+        $package->duration_day = $request->duration_day;
+        $package->duration_night = $request->duration_night;
         $package->excluded = json_encode($request->excluded);
         $package->included = json_encode($request->included);
         $package->group_size = $request->group_size;
@@ -162,6 +196,10 @@ class PackageController extends Controller
     public function delete(Package $package)
     {
         $this->authorize('admin');
+        if (File::exists($package->image)) {
+            unlink($package->image);
+        }
+        
         $images = json_decode($package->images, true);
         foreach($images as $image){
             if (File::exists($image)) {
@@ -170,7 +208,7 @@ class PackageController extends Controller
         };
         $package->delete();
     }
-
+    
     public function singlePackage($slug)
     {
         $package = Package::where('slug', $slug)->with('category', 'user', 'questions', 'bookings')->first();
@@ -183,15 +221,17 @@ class PackageController extends Controller
             return response()->json(['package'=> null, 'questions'=> null, 'popularPackage'=> null, 'categories'=> null, ], 200);
         }
     }
-
+    
     public function bookingPackage()
     {
+        $this->authorize('adminOrGuide');
         $packages = Package::where('user_id', Auth::id())->with('bookings.payments')->paginate(20);
         return response()->json(compact('packages'));
     }
-
+    
     public function packageStatus(Package $package, Request $request)
     {
+        $this->authorize('adminOrGuide');
         $package->status = $request->status;
         $package->save();
     }

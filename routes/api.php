@@ -85,7 +85,7 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::get('guides', 'GuideController@guides');
     
     // Custom Page & Section Related Page
-    Route::get('page', 'PageController@index');
+    Route::get('edit-page', 'PageController@index');
     Route::post('create-page', 'PageController@createPage');
     Route::get('section-editor', 'PageController@sectionEditor');
     Route::post('update-header', 'PageController@updateHeader');
@@ -94,7 +94,14 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::post('update-footer', 'PageController@updateFooter');
     Route::post('add-slider-package', 'PageController@addSliderPackage');
     Route::get('section-editor-package', 'PageController@sectionEditorPackage');
+    Route::post('update-about', 'PageController@updateAbout');
+    Route::post('update-contact', 'PageController@updateContact');
+    Route::post('update-faq', 'PageController@updatefaq');
     
+    // Contact Us Page Related Route
+    Route::get('get-contact-message', 'ContactMessageController@index');
+    Route::post('update-contact-message/{contact_message}', 'ContactMessageController@updateMessage');
+    Route::post('delete-contact-message/{contact_message}', 'ContactMessageController@deleteMessage');
 });
 
 //Auth Not Required Route List
@@ -110,17 +117,24 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::get('user-packages/{slug}', 'PackageController@userPackages');
     Route::get('category-packages/{slug}', 'PackageController@categoryPackages');
     Route::get('destination-package', 'PackageController@destinationPackage');
-
+    
     // Public Tour Package Related Route
     Route::get('package/{slug}', 'PackageController@singlePackage');
     
     // Booking Related Route
     Route::post('check-booking/', 'BookingController@checkBooking');
-    
 
     // Blog Related Route
     Route::get('blog/{slug}', 'BlogController@post');
     Route::get('blog-posts', 'BlogController@blogPosts');
     Route::get('category-blog/{slug}', 'BlogController@categoryPost');
     Route::get('user-blog/{slug}', 'BlogController@userPost');
+
+    // Addictional Page Related Route
+    Route::get('about', 'PageController@about');
+    Route::get('contact', 'PageController@contact');
+    Route::get('faq', 'PageController@faq');
+    
+    // Send Contact Us Message
+    Route::post('submit-message', 'ContactMessageController@submitMessage');
 });

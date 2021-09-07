@@ -21,9 +21,11 @@ class CreatePackagesTable extends Migration
             $table->unsignedBigInteger('place_id');
             $table->string('name');
             $table->string('slug')->unique();
+            $table->string('thumbnail');
             $table->text('images');
             $table->string('address');
-            $table->string('duration');
+            $table->integer('duration_day');
+            $table->integer('duration_night');
             $table->string('group_size');
             $table->integer('ticket');
             $table->decimal('price', 7, 2);

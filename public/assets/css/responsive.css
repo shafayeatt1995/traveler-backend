@@ -24,7 +24,7 @@
 
   .blog-card .blog-details a.blog-title {
     margin: 28px 0;
-    font-weight: 700;
+    font-weight: bold;
     font-size: 18px;
     line-height: 30px;
   }
@@ -318,9 +318,8 @@
   }
 
   li a.active {
-    color: #304F47;
-    font-weight: 600;
-    font-size: 1.5rem;
+    color: #333;
+    font-weight: bold;
   }
 }
 
