@@ -20,8 +20,7 @@ class BlogController extends Controller
         $this->authorize('adminOrGuide');
         $posts = Blog::where('user_id', Auth::id())->latest()->paginate(15);
         $categories = Category::orderBy('name')->get();
-        $client_id = env('IMGUR_CLIENT_ID') !== '' ? env('IMGUR_CLIENT_ID') : null;
-        return response()->json(compact('posts', 'categories', 'client_id'));
+        return response()->json(compact('posts', 'categories'));
     }
     
     public function createPost(Request $request)
@@ -44,12 +43,22 @@ class BlogController extends Controller
         
         Image::make($request->image)->save($name);
 
+        $thumbnailPath = 'images/blog/thumbnail/';
+        $thumbnailName = $thumbnailPath . Str::random(2) . time() . '.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
+        
+        if (!File::exists($thumbnailPath)) {
+            File::makeDirectory($thumbnailPath, $mode = 0777, true, true);
+        }
+        
+        Image::make($request->image)->fit(450, 300, function($constraint){$constraint->upsize();})->save($thumbnailName);
+
         $blog = new Blog();
         $blog->user_id = Auth::id();
         $blog->category_id = $request->category_id;
         $blog->title = $request->title;
         $blog->slug = Str::slug($request->title) . Str::random(2);
         $blog->image = $name;
+        $blog->thumbnail = $thumbnailName;
         $blog->post = $request->post;
         $blog->status = $request->status;
         $blog->save();
@@ -68,6 +77,9 @@ class BlogController extends Controller
             if (File::exists($blog->image)) {
                 unlink($blog->image);
             }
+            if (File::exists($blog->thumbnail)) {
+                unlink($blog->thumbnail);
+            }
 
             $path = 'images/blog/';
             $name = $path . Str::random(2) . time() . '.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
@@ -77,14 +89,25 @@ class BlogController extends Controller
             }
 
             Image::make($request->image)->save($name);
+
+            $thumbnailPath = 'images/blog/thumbnail/';
+            $thumbnailName = $thumbnailPath . Str::random(2) . time() . '.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
+            
+            if (!File::exists($thumbnailPath)) {
+                File::makeDirectory($thumbnailPath, $mode = 0777, true, true);
+            }
+            
+            Image::make($request->image)->fit(450, 300, function($constraint){$constraint->upsize();})->save($thumbnailName);
         } else {
             $name = $blog->image;
+            $thumbnailName = $blog->thumbnail;
         }
 
         $blog->category_id = $request->category_id;
         $blog->title = $request->title;
         $blog->slug = Str::slug($request->title) . Str::random(2);
         $blog->image = $name;
+        $blog->thumbnail = $thumbnailName;
         $blog->post = $request->post;
         $blog->status = $request->status;
         $blog->save();
@@ -96,44 +119,67 @@ class BlogController extends Controller
         if (File::exists($blog->image)) {
             unlink($blog->image);
         }
+        if (File::exists($blog->thumbnail)) {
+            unlink($blog->thumbnail);
+        }
         $blog->delete();
     }
 
     public function post($slug)
     {
-        $post = Blog::where('slug', $slug)->available()->with('user', 'category')->withCount('comments')->first();
+        $post = Blog::available()->where('slug', $slug)->with('user', 'category')->withCount('comments')->first();
         $comments = Comment::where('blog_id', $post->id)->with('user', 'replays.user')->latest()->paginate(15);
-        $posts = Blog::with('user')->inRandomOrder()->take(5)->get();
+        $posts = Blog::available()->with('user')->inRandomOrder()->take(5)->get();
         $categories = Category::orderBy('name')->get();
         return response()->json(compact('post', 'comments', 'posts', 'categories'));
+    }
+
+    public function increment(Blog $blog)
+    {
+        $blog->view = $blog->view + 1;
+        $blog->save();
     }
 
     public function categoryPost($slug)
     {
         $category = Category::where('slug', $slug)->first();
         if (isset($category)) {
-            $posts = Blog::where('category_id', $category->id)->with('user')->withCount('comments')->inRandomOrder()->paginate(15);
+            $posts = Blog::available()->where('category_id', $category->id)->with('user')->withCount('comments')->inRandomOrder()->paginate(10);
         } else {
             $posts = null;
         }
-        return response()->json(compact('category', 'posts'));
+        $categories = Category::orderBy('name')->get();
+        $popular = Blog::available()->with('user')->orderBy('view')->inRandomOrder()->take(5)->get();
+        return response()->json(compact('category', 'posts', 'categories', 'popular'));
     }
 
     public function userPost($slug)
     {
         $user = User::where('slug', $slug)->first();
         if (isset($user)) {
-            $posts = Blog::where('user_id', $user->id)->with('user')->withCount('comments')->inRandomOrder()->paginate(15);
+            $posts = Blog::available()->where('user_id', $user->id)->with('user')->withCount('comments')->inRandomOrder()->paginate(10);
         } else {
             $posts = null;
         }
+        $categories = Category::orderBy('name')->get();
+        $popular = Blog::available()->with('user')->orderBy('view')->inRandomOrder()->take(5)->get();
         
-        return response()->json(compact('user', 'posts'));
+        return response()->json(compact('user', 'posts', 'categories', 'popular'));
     }
 
     public function blogPosts()
     {
-        $posts = Blog::with('user')->withCount('comments')->inRandomOrder()->paginate(15);
-        return response()->json(compact('posts'));
+        $posts = Blog::available()->with('user')->withCount('comments')->inRandomOrder()->paginate(10);
+        $categories = Category::orderBy('name')->get();
+        $popular = Blog::available()->with('user')->orderBy('view')->inRandomOrder()->take(5)->get();
+        return response()->json(compact('posts', 'categories', 'popular'));
+    }
+
+    public function searchPost($keyword)
+    {
+        $posts = Blog::where('title','LIKE', "%$keyword%")->orWhere('post','LIKE', "%$keyword%")->available()->with('user')->withCount('comments')->paginate(10);
+        $categories = Category::orderBy('name')->get();
+        $popular = Blog::available()->with('user')->orderBy('view')->inRandomOrder()->take(5)->get();
+        return response()->json(compact('posts', 'categories', 'popular'));
     }
 }

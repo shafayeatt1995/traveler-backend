@@ -20,8 +20,10 @@ class CreateBlogsTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('image');
+            $table->string('thumbnail');
             $table->text('post');
             $table->boolean('status');
+            $table->integer('view')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

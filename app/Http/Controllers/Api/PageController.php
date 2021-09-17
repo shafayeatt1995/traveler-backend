@@ -19,7 +19,8 @@ class PageController extends Controller
         $this->authorize('admin');
         $about = Page::where('slug', 'about')->first();
         $contact = Page::where('slug', 'contact')->first();
-        return response()->json(compact('about', 'contact'));
+        $faq = Page::where('slug', 'faq')->first();
+        return response()->json(compact('about', 'contact', 'faq'));
     }
 
     public function createPage(Request $request)
@@ -36,7 +37,8 @@ class PageController extends Controller
         $achievement = Section::where('name', 'achievement')->first();
         $review = Section::where('name', 'review')->first();
         $footer = Section::where('name', 'footer')->first();
-        return response()->json(compact('header', 'packages', 'activePackages', 'achievement', 'review', 'footer'));
+        $breadcrumb = Section::where('name', 'breadcrumb')->first();
+        return response()->json(compact('header', 'packages', 'activePackages', 'achievement', 'review', 'footer', 'breadcrumb'));
     }
 
     public function sectionEditorPackage()
@@ -181,6 +183,34 @@ class PageController extends Controller
             'phone'=>$request->phone,
             'email'=>$request->email,
         ]);
+        $information->save();
+    }
+
+    public function updateBreadcrumb(Request $request)
+    {
+        $this->authorize('admin');
+        $request->validate([
+            'newImage' => 'required',
+        ]);
+        $find = Section::where('name', 'breadcrumb')->first();
+        if (isset($request->newImage)) {
+            if ($find !== null && File::exists($find->info)) {
+                unlink($find->info);
+            }
+    
+            $path = 'images/breadcrumb/';
+            $name = $path . time() . '.' . explode('/', explode(':', substr($request->newImage, 0, strpos($request->newImage, ';')))[1])[1];
+
+            if (!File::exists($path)) {
+                File::makeDirectory($path, $mode = 0777, true, true);
+            }
+
+            Image::make($request->newImage)->save($name);
+        }
+
+        $information = isset($find) ? $find : new Section();
+        $information->name = 'breadcrumb';
+        $information->info = $name;
         $information->save();
     }
 

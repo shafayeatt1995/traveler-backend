@@ -40,6 +40,7 @@ class PackageController extends Controller
             'group_size' => 'required',
             'ticket' => 'required|numeric',
             'images' => 'required',
+            'thumbnail' => 'required',
             'included' => 'required',
             'overview' => 'required',
             'price' => 'required',
@@ -62,7 +63,6 @@ class PackageController extends Controller
 
         $images = [];
         foreach ($request->images as $image) {
-            $slug = Str::slug($request->name) . Str::random(2);
             $path = 'images/package/';
             $name = $path . $slug . time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
 
@@ -116,6 +116,7 @@ class PackageController extends Controller
             'ticket' => 'required|numeric',
             'images' => 'required_without:new_images',
             'new_images' => 'required_without:images',
+            'thumbnail' => 'required',
             'included' => 'required',
             'overview' => 'required',
             'price' => 'required',
@@ -196,8 +197,8 @@ class PackageController extends Controller
     public function delete(Package $package)
     {
         $this->authorize('admin');
-        if (File::exists($package->image)) {
-            unlink($package->image);
+        if (File::exists($package->thumbnail)) {
+            unlink($package->thumbnail);
         }
         
         $images = json_decode($package->images, true);
@@ -211,7 +212,7 @@ class PackageController extends Controller
     
     public function singlePackage($slug)
     {
-        $package = Package::where('slug', $slug)->with('category', 'user', 'questions', 'bookings')->first();
+        $package = Package::where('slug', $slug)->with('category', 'user', 'bookings')->first();
         if(isset($package)){
             $questions = Question::where('package_id', $package->id)->with('user')->latest()->paginate(15);
             $popularPackage = Package::inRandomOrder()->take(5)->get();
@@ -238,32 +239,53 @@ class PackageController extends Controller
 
     public function packages()
     {
-        $packages = Package::latest()->paginate(15);
-        return response()->json(compact('packages'));
+        $packages = Package::latest()->paginate(10);
+        $popular = Package::inRandomOrder()->orderBy('view')->take(5)->get();
+        $categories = Category::orderBy('name')->get();
+        return response()->json(compact('packages', 'popular', 'categories'));
+    }
+
+    public function increment(Package $package)
+    {
+        $package->view = $package->view + 1;
+        $package->save();
     }
 
     public function userPackages($slug)
     {
         $user = User::where('slug', $slug)->first();
-        if (isset($user)) {
-            $packages = Package::latest()->paginate(15);
-        } else {
-            $packages = null;
-        }
+        $packages = Package::latest()->paginate(10);
+        $popular = Package::with('user')->orderBy('view')->inRandomOrder()->take(5)->get();
+        $categories = Category::orderBy('name')->get();
         
-        return response()->json(compact('user', 'packages'));
+        return response()->json(compact('user', 'packages', 'popular', 'categories'));
     }
 
     public function categoryPackages($slug)
     {
         $category = Category::where('slug', $slug)->first();
-        if (isset($category)) {
-            $packages = Package::where('category_id', $category->id)->latest()->paginate(15);
-        } else {
-            $packages = null;
-        }
+        $packages = Package::latest()->paginate(10);
+        $popular = Package::with('user')->orderBy('view')->inRandomOrder()->take(5)->get();
+        $categories = Category::orderBy('name')->get();
         
-        return response()->json(compact('category', 'packages'));
+        return response()->json(compact('category', 'packages', 'popular', 'categories'));
+    }
+
+    public function searchPackage(Request $request)
+    {
+        $packages = Package::with('category')
+        ->name($request->keyword)
+        ->overview($request->keyword)
+        ->category($request->categories)
+        ->duration($request->durations)
+        ->min_price($request->minPrice)
+        ->max_price($request->maxPrice)
+        ->latest()
+        ->paginate(10);
+        $popular = Package::with('user')->orderBy('view')->inRandomOrder()->take(5)->get();
+        $categories = Category::orderBy('name')->get();
+        
+        return response()->json(compact('packages', 'popular', 'categories'));
     }
 
     public function destinationPackage()

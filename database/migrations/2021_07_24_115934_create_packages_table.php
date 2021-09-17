@@ -39,6 +39,7 @@ class CreatePackagesTable extends Migration
             $table->text('tour_plan');
             $table->string('vehicle');
             $table->boolean('status')->nullable()->comment('null = booking abailable, false = tour running, true = tour complete');
+            $table->integer('view')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->foreign('place_id')->references('id')->on('places')->onDelete('cascade');

@@ -65,6 +65,11 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::post('submit-booking', 'BookingController@submitBooking');
     Route::post('update-booking/{booking}', 'BookingController@updateBooking');
     Route::post('partial-payment', 'BookingController@partialPayment');
+    
+    //Wishlist Related Route
+    Route::get('wishlist/{id}', 'WishlistController@getWishlist');
+    Route::post('create-wishlist/{id}', 'WishlistController@createWishlist');
+    Route::post('remove-wishlist/{id}', 'WishlistController@removeWishlist');
 
     // Blog Related Route
     Route::get('post', 'BlogController@index');
@@ -92,6 +97,7 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::post('update-achievement', 'PageController@updateAchievement');
     Route::post('update-review', 'PageController@updateReview');
     Route::post('update-footer', 'PageController@updateFooter');
+    Route::post('update-breadcrumb', 'PageController@updateBreadcrumb');
     Route::post('add-slider-package', 'PageController@addSliderPackage');
     Route::get('section-editor-package', 'PageController@sectionEditorPackage');
     Route::post('update-about', 'PageController@updateAbout');
@@ -102,6 +108,15 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::get('get-contact-message', 'ContactMessageController@index');
     Route::post('update-contact-message/{contact_message}', 'ContactMessageController@updateMessage');
     Route::post('delete-contact-message/{contact_message}', 'ContactMessageController@deleteMessage');
+    
+    // Site Setting Related Route
+    Route::get('site-setting', 'SettingController@index');
+    Route::post('update-app', 'SettingController@updateApp');
+    Route::post('update-paypal', 'SettingController@updatePaypal');
+    Route::post('update-stripe', 'SettingController@updateStripe');
+    Route::post('update-imgur', 'SettingController@updateImgur');
+    Route::post('update-database', 'SettingController@updateDatabase');
+    Route::post('update-mail', 'SettingController@updateMail');
 });
 
 //Auth Not Required Route List
@@ -114,9 +129,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
 
     // Package Related Route
     Route::get('packages', 'PackageController@packages');
+    Route::post('increment-package/{package}', 'PackageController@increment');
     Route::get('user-packages/{slug}', 'PackageController@userPackages');
     Route::get('category-packages/{slug}', 'PackageController@categoryPackages');
     Route::get('destination-package', 'PackageController@destinationPackage');
+    Route::post('search-package', 'PackageController@searchPackage');
     
     // Public Tour Package Related Route
     Route::get('package/{slug}', 'PackageController@singlePackage');
@@ -126,9 +143,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
 
     // Blog Related Route
     Route::get('blog/{slug}', 'BlogController@post');
+    Route::post('increment-blog/{blog}', 'BlogController@increment');
     Route::get('blog-posts', 'BlogController@blogPosts');
     Route::get('category-blog/{slug}', 'BlogController@categoryPost');
     Route::get('user-blog/{slug}', 'BlogController@userPost');
+    Route::get('search-blog/{keyword}', 'BlogController@searchPost');
 
     // Addictional Page Related Route
     Route::get('about', 'PageController@about');
