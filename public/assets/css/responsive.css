@@ -26,6 +26,10 @@
         width: 200px;
         justify-content: center;
     }
+
+    .package-details .package-info {
+        flex-direction: column;
+    }
 }
 
 /*========== Tablet ==========*/
@@ -194,10 +198,17 @@
     .commentotor-img {
         width: 100%;
     }
+    .blog-date {
+        padding: 10px !important;
+    }
+
+    .package-details .package-info {
+        flex-direction: column;
+    }
 }
 
 /*========== Mobile ==========*/
-@media only screen and (min-width: 360px) and (max-width: 767px){
+@media only screen and (max-width: 767px){
     .header-area {
         padding: 20px 0;
     }
@@ -432,5 +443,9 @@
     }
     .p-review-input {
         padding: 25px 15px;
+    }
+
+    .package-details .package-info {
+        flex-direction: column;
     }
 }

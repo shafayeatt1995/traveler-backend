@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
@@ -20,7 +23,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register', 'forgetPassword', 'resetLink', 'resetPassword']]);
     }
 
     /**
@@ -119,7 +122,7 @@ class AuthController extends Controller
         $user->slug = Str::slug($request->name) . Str::random(3);
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->social_profile = json_encode(['facebook'=>'', 'twitter'=>'', 'instagram'=>'', 'whatsapp'=>'']);
+        $user->social_profile = json_encode(['facebook' => '', 'twitter' => '', 'instagram' => '', 'whatsapp' => '']);
         $user->save();
     }
 
@@ -139,7 +142,7 @@ class AuthController extends Controller
         $user->email = $request->email;
         $user->role_id = $request->userType;
         $user->password = Hash::make($request->password);
-        $user->social_profile = json_encode(['facebook'=>'', 'twitter'=>'', 'instagram'=>'', 'whatsapp'=>'']);
+        $user->social_profile = json_encode(['facebook' => '', 'twitter' => '', 'instagram' => '', 'whatsapp' => '']);
         $user->save();
     }
 
@@ -151,7 +154,7 @@ class AuthController extends Controller
             'email' => 'required',
             'userType' => 'required',
         ]);
-        
+
         $user->name = $request->name;
         $user->slug = Str::slug($request->name) . Str::random(3);
         $user->email = $request->email;
@@ -161,7 +164,7 @@ class AuthController extends Controller
 
     public function deleteUser(User $user)
     {
-        if($user->image !== 'images/user.png'){
+        if ($user->image !== 'images/user.png') {
             if (File::exists($user->image)) {
                 unlink($user->image);
             }
@@ -176,9 +179,9 @@ class AuthController extends Controller
             'phone' => 'required',
             'message' => 'required|max:500',
         ]);
-        
+
         $user = Auth::user();
-        $user->guide_request = json_encode(['phone'=> $request->phone, 'message'=> $request->message]);
+        $user->guide_request = json_encode(['phone' => $request->phone, 'message' => $request->message]);
         $user->save();
     }
 
@@ -194,20 +197,20 @@ class AuthController extends Controller
             if (File::exists($user->image) && $user->image !== 'images/user.png') {
                 unlink($user->image);
             }
-            
+
             $slug = Str::slug($request->name);
             $path = 'images/user/';
             $name = $path . $slug . time() . '.' . explode('/', explode(':', substr($request->image, 0, strpos($request->image, ';')))[1])[1];
-            
+
             if (!File::exists($path)) {
                 File::makeDirectory($path, $mode = 0777, true, true);
             }
-            
+
             Image::make($request->image)->save($name);
-        }else{
+        } else {
             $name = $user->image;
         }
-        
+
         $user->name = $request->name;
         $user->slug = Str::slug($request->name) . Str::random(3);
         $user->image = $name;
@@ -224,22 +227,117 @@ class AuthController extends Controller
         ]);
 
         $hashedPassword = Auth::user()->password;
-        if (Hash::check($request->old_password, $hashedPassword))
-        {
-            if (!Hash::check($request->password, $hashedPassword))
-            {
+        if (Hash::check($request->old_password, $hashedPassword)) {
+            if (!Hash::check($request->password, $hashedPassword)) {
                 $user = Auth::user();
                 $user->password = Hash::make($request->password);
                 $user->save();
+            } else {
+                return response()->json(['error' => 'New Password Can not be same as Old Password'], 422);
             }
-            else
-            {
-                return response()->json(['error'=> 'New Password Can not be same as Old Password'], 422);
+        } else {
+            return response()->json(['error' => 'Current Password not match'], 422);
+        }
+    }
+
+    public function verification($token)
+    {
+        $this->authorize('authCheck');
+        $userToken = Auth::user()->remember_token;
+        if ($userToken == $token) {
+            $user = Auth::User();
+            $user->email_verified_at = Carbon::now();
+            $user->save();
+            return response()->json('Account Active Successfully.', 200);
+        } else {
+            return response()->json(['error' => 'Verification Code Not Matched.'], 422);
+        }
+    }
+
+    public function sendVerificationMail()
+    {
+        $this->authorize('authCheck');
+        $token = Str::random(25);
+        $user = Auth::user();
+        if (!isset($user->email_verified_at)) {
+            $user->remember_token = isset($user->remember_token) ? $user->remember_token : $token;
+            $user->save();
+
+            $data = [
+                'subject' => 'Verify ' .  env('APP_NAME') . ' Account',
+                'email' => $user->email,
+            ];
+
+            Mail::send('verification', $data, function ($message) use ($data) {
+                $message->to($data['email'])->subject($data['subject']);
+            });
+        }
+    }
+
+    public function forgetPassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+        $find = DB::table('password_resets')->where('email', $user->email)->first();
+
+        if (isset($user)) {
+            if (!isset($find)) {
+                $token = Str::random(64);
+                DB::table('password_resets')->insert([
+                    'email' => $request->email,
+                    'token' => $token,
+                    'created_at' => Carbon::now()
+                ]);
+
+                $data = [
+                    'subject' => 'Reset ' .  env('APP_NAME') . ' Account Password',
+                    'email' => $request->email,
+                    'user' => $user,
+                    'token' => $token,
+                ];
+
+                Mail::send('forgetPassword', $data, function ($message) use ($data) {
+                    $message->to($data['email'])->subject($data['subject']);
+                });
+            } else {
+                $data = [
+                    'subject' => 'Reset ' .  env('APP_NAME') . ' Account Password',
+                    'email' => $request->email,
+                    'user' => $user,
+                    'token' => $find->token,
+                ];
+
+                Mail::send('forgetPassword', $data, function ($message) use ($data) {
+                    $message->to($data['email'])->subject($data['subject']);
+                });
             }
+        } else {
+            return response()->json(['error' => 'User Not Found'], 422);
         }
-        else
-        {
-            return response()->json(['error'=> 'Current Password not match'], 422);
+    }
+
+    public function resetLink($token)
+    {
+        $find = DB::table('password_resets')->where('token', $token)->first();
+        if (!isset($find)) {
+            return response()->json(['error' => 'Reset Password Link Not found'], 422);
         }
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $request->validate([
+            'password' => 'required|min:6|max:20|confirmed',
+            'password_confirmation' => 'required'
+        ]);
+
+        $find = DB::table('password_resets')->where('token', $request->token)->first();
+        $user = User::where('email', $find->email)->first();
+        $user->password = Hash::make($request->password);
+        $user->save();
+        DB::table('password_resets')->where('token', $request->token)->delete();
     }
 }

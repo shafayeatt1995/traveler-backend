@@ -33,6 +33,7 @@ class SettingController extends Controller
         Artisan::call('env:set APP_NAME ' . $request->name);
         Artisan::call('env:set APP_DEBUG ' . $status);
         Artisan::call('env:set APP_URL ' . $request->url);
+        Artisan::call('config:clear');
     }
 
     public function updatePaypal(Request $request)
@@ -44,6 +45,7 @@ class SettingController extends Controller
         Artisan::call('env:set PAYPAL ' . $status);
         Artisan::call('env:set PAYPAL_CLIENT_ID ' . $client_id);
         Artisan::call('env:set PAYPAL_SECRET ' . $secret);
+        Artisan::call('config:clear');
     }
 
     public function updateStripe(Request $request)
@@ -55,6 +57,7 @@ class SettingController extends Controller
         Artisan::call('env:set STRIPE ' . $status);
         Artisan::call('env:set STRIPE_CLIENT_ID ' . $client_id);
         Artisan::call('env:set STRIPE_SECRET ' . $secret);
+        Artisan::call('config:clear');
     }
 
     public function updateImgur(Request $request)
@@ -66,6 +69,7 @@ class SettingController extends Controller
         Artisan::call('env:set IMGUR ' . $status);
         Artisan::call('env:set IMGUR_CLIENT_ID ' . $client_id);
         Artisan::call('env:set IMGUR_SECRET ' . $secret);
+        Artisan::call('config:clear');
     }
 
     public function updateDatabase(Request $request)
@@ -84,7 +88,8 @@ class SettingController extends Controller
         Artisan::call('env:set DB_PORT ' . $request->port);
         Artisan::call('env:set DB_DATABASE ' . $request->name);
         Artisan::call('env:set DB_USERNAME ' . $request->userName);
-        Artisan::call('env:set DB_PASSWORD ' . $request->password);
+        Artisan::call('env:set DB_PASSWORD23 ' . $request->password);
+        Artisan::call('config:clear');
     }
 
     public function updateMail(Request $request)
@@ -108,5 +113,6 @@ class SettingController extends Controller
         Artisan::call('env:set MAIL_USERNAME ' . $request->userName);
         Artisan::call('env:set MAIL_PASSWORD ' . $request->password);
         Artisan::call('env:set MAIL_ENCRYPTION ' . $request->encryption);
+        Artisan::call('config:clear');
     }
 }

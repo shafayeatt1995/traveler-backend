@@ -15,4 +15,9 @@ class Place extends Model
     {
         return $this->hasMany(Package::class);
     }
+    
+    public function runningPackages()
+    {
+        return $this->hasMany(Package::class)->whereDate('start_date', '>', now());
+    }
 }

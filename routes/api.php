@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 // Auth Required Route list
 Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'], function () {
+    // Account Related Route
+    Route::post('verification/{token}', 'AuthController@verification');
+    Route::post('send-verification-mail', 'AuthController@sendVerificationMail');
+
     // Auth Related Route
     Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
@@ -117,6 +121,11 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::post('update-imgur', 'SettingController@updateImgur');
     Route::post('update-database', 'SettingController@updateDatabase');
     Route::post('update-mail', 'SettingController@updateMail');
+    
+    // Dashboard Related Route
+    Route::get('admin-dashboard', 'DashboardController@adminDashboard');
+    Route::get('admin-booking-details', 'DashboardController@adminBookingDetails');
+    Route::get('admin-available-package', 'DashboardController@adminAvailablePackage');
 });
 
 //Auth Not Required Route List
@@ -156,4 +165,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     
     // Send Contact Us Message
     Route::post('submit-message', 'ContactMessageController@submitMessage');
+    
+    // Forget Password Related Password
+    Route::post('forget-password', 'AuthController@forgetPassword');
+    Route::get('find-reset-link/{token}', 'AuthController@resetLink');
+    Route::post('reset-password', 'AuthController@resetPassword');
 });
