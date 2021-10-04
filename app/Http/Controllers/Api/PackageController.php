@@ -28,7 +28,7 @@ class PackageController extends Controller
 
     public function create(Request $request)
     {
-        $this->authorize('admin');
+        $this->authorize('adminOrGuide');
         $request->validate([
             'name' => 'required',
             'address' => 'required',
@@ -103,7 +103,7 @@ class PackageController extends Controller
 
     public function update(Package $package, Request $request)
     {
-        $this->authorize('admin');
+        $this->authorize('adminOrGuide');
         $request->validate([
             'name' => 'required',
             'address' => 'required',
@@ -196,7 +196,7 @@ class PackageController extends Controller
 
     public function delete(Package $package)
     {
-        $this->authorize('admin');
+        $this->authorize('adminOrGuide');
         if (File::exists($package->thumbnail)) {
             unlink($package->thumbnail);
         }

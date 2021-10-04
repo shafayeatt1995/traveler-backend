@@ -125,7 +125,15 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     // Dashboard Related Route
     Route::get('admin-dashboard', 'DashboardController@adminDashboard');
     Route::get('admin-booking-details', 'DashboardController@adminBookingDetails');
+    Route::get('admin-today-booking-details', 'DashboardController@adminTodayBookingDetails');
     Route::get('admin-available-package', 'DashboardController@adminAvailablePackage');
+    Route::get('admin-tour-running-package', 'DashboardController@adminTourRunningPackage');
+
+    Route::get('guide-dashboard', 'DashboardController@guideDashboard');
+    Route::get('guide-booking-details', 'DashboardController@guideBookingDetails');
+    Route::get('guide-today-booking-details', 'DashboardController@guideTodayBookingDetails');
+
+    Route::get('user-dashboard', 'DashboardController@userDashboard');
 });
 
 //Auth Not Required Route List

@@ -3518,16 +3518,19 @@ select option:checked, select option:hover, select option:active, select option:
   color: #aaa;
 }
 
-.dashboard-info button {
+.dashboard-info button,
+.dashboard-info a {
   border: none;
   outline: none;
   background: transparent;
   margin: 10px 0;
   color: #36e;
   font-weight: bold;
+  display: inline-block;
 }
 
-.dashboard-info button svg {
+.dashboard-info button svg,
+.dashboard-info a svg {
   transform: translateY(2px);
 }
 
@@ -3927,4 +3930,8 @@ span.remove-topic {
   box-shadow: 0px 0px 30px rgb(0 0 0 / 8%);
   padding: 10px 0;
   min-height: 90%;
+}
+
+.dashboard-table {
+  box-shadow: 0px 0px 30px rgb(0 0 0 / 8%);
 }
