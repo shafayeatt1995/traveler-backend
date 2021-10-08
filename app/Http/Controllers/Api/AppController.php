@@ -37,6 +37,7 @@ class AppController extends Controller
         $header = Section::where('name', 'header')->first();
         $footer = Section::where('name', 'footer')->first();
         $breadcrumb = Section::where('name', 'breadcrumb')->first();
-        return response()->json(compact('paypal', 'appName', 'header', 'footer', 'imgurId', 'breadcrumb', 'paypalStatus', 'stripeStatus', 'imgurStatus'));
+        $titleIcon = env('TITLE_ICON');
+        return response()->json(compact('paypal', 'appName', 'header', 'footer', 'imgurId', 'breadcrumb', 'paypalStatus', 'stripeStatus', 'imgurStatus', 'titleIcon'));
     }
 }

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendVerificationMail;
+use App\Mail\VerificationMail;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;

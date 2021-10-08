@@ -1,18 +1,24 @@
+<!DOCTYPE html>
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your Profile</title>
 
     <style>
-        *{
+        * {
             font-family: Arial, Helvetica, sans-serif;
         }
+
         .email-template {
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+
         .activation-content {
             box-shadow: 0 0px 45px -20px;
             margin-top: 40px;
@@ -138,3 +144,5 @@
         </div>
     </div>
 </body>
+
+</html>

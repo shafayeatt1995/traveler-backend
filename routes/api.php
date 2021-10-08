@@ -121,19 +121,27 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::post('update-imgur', 'SettingController@updateImgur');
     Route::post('update-database', 'SettingController@updateDatabase');
     Route::post('update-mail', 'SettingController@updateMail');
+    Route::post('update-icon', 'SettingController@updateIcon');
+    Route::post('update-preloader', 'SettingController@updatePreloader');
     
-    // Dashboard Related Route
+    // Admin Dashboard Related Route
     Route::get('admin-dashboard', 'DashboardController@adminDashboard');
     Route::get('admin-booking-details', 'DashboardController@adminBookingDetails');
     Route::get('admin-today-booking-details', 'DashboardController@adminTodayBookingDetails');
     Route::get('admin-available-package', 'DashboardController@adminAvailablePackage');
     Route::get('admin-tour-running-package', 'DashboardController@adminTourRunningPackage');
 
+    // Guide Dashboard Related Route
     Route::get('guide-dashboard', 'DashboardController@guideDashboard');
     Route::get('guide-booking-details', 'DashboardController@guideBookingDetails');
     Route::get('guide-today-booking-details', 'DashboardController@guideTodayBookingDetails');
 
+    // User Dashboard Related Route
     Route::get('user-dashboard', 'DashboardController@userDashboard');
+
+    // Subscriber Related Route
+    Route::get('subscriber', 'SubscribeController@index');
+    Route::post('delete-subscriber/{subscribe}', 'SubscribeController@deleteSubscriber');
 });
 
 //Auth Not Required Route List
@@ -178,4 +186,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::post('forget-password', 'AuthController@forgetPassword');
     Route::get('find-reset-link/{token}', 'AuthController@resetLink');
     Route::post('reset-password', 'AuthController@resetPassword');
+
+    // Subscriber Related Route
+    Route::post('create-subscriber', 'SubscribeController@createSubscriber');
 });

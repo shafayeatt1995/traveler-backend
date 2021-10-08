@@ -1,5 +1,6 @@
 /*========== Netbook ==========*/
-@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+@media only screen and (min-width: 992px) and (max-width: 1240px) {
     .package-slider-wrap {
         margin-top: 15px;
     }
@@ -18,22 +19,21 @@
     .package-slider-wrap img {
         height: 400px;
     }
-    .package-popular,
-    .p-sidebar-cards {
+    .package-popular, .p-sidebar-cards {
         padding: 25px 10px;
     }
     .blog-img .blog-date, .blog-img-xl .blog-date {
         width: 200px;
         justify-content: center;
     }
-
     .package-details .package-info {
         flex-direction: column;
     }
 }
 
 /*========== Tablet ==========*/
-@media only screen and (min-width: 768px) and (max-width: 991px){
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
     .header-area {
         padding: 20px 0;
     }
@@ -46,8 +46,7 @@
     .navbar-brand img {
         width: 25%;
     }
-    .topbar-contact-left ul li,
-    .topbar-contact-right ul li {
+    .topbar-contact-left ul li, .topbar-contact-right ul li {
         margin-right: 0;
     }
     .mobile-menu {
@@ -87,7 +86,7 @@
         display: flex;
         justify-content: space-between;
     }
-    .menu-close-btn{
+    .menu-close-btn {
         display: block;
     }
     .menu-close-btn {
@@ -98,10 +97,10 @@
         top: 15px;
         font-size: 25px;
     }
-    .mobile-logout{
+    .mobile-logout {
         display: block !important;
     }
-    .mobile-bottom-menu{
+    .mobile-bottom-menu {
         display: block;
     }
     .main-nav .navbar-icons {
@@ -125,7 +124,7 @@
         top: auto;
         bottom: 44px;
     }
-    .account-el svg{
+    .account-el svg {
         color: #36e;
     }
     .account-el a {
@@ -144,7 +143,6 @@
     .footer-bottom {
         padding-bottom: 70px;
     }
-
     .main-nav .navbar-icons .searchbar-open {
         margin-right: 0;
     }
@@ -190,7 +188,6 @@
     .error p {
         font-size: 90px;
     }
-
     .commentor {
         align-items: flex-start;
         flex-direction: column;
@@ -201,14 +198,14 @@
     .blog-date {
         padding: 10px !important;
     }
-
     .package-details .package-info {
         flex-direction: column;
     }
 }
 
 /*========== Mobile ==========*/
-@media only screen and (max-width: 767px){
+
+@media only screen and (max-width: 767px) {
     .header-area {
         padding: 20px 0;
     }
@@ -226,8 +223,7 @@
         display: block;
         padding: 12px 0;
     }
-    .topbar-contact-left ul li,
-    .topbar-contact-right ul li {
+    .topbar-contact-left ul li, .topbar-contact-right ul li {
         margin-right: 0;
     }
     .slider-item {
@@ -268,7 +264,7 @@
         margin-left: auto;
         margin: 0 15px;
     }
-    .banner-btn{
+    .banner-btn {
         text-align: center;
     }
     .banner-slider .owl-nav button.owl-prev {
@@ -281,7 +277,7 @@
         bottom: -10px;
         right: 25%;
     }
-    .menu-close-btn{
+    .menu-close-btn {
         display: block;
     }
     .menu-close-btn {
@@ -292,11 +288,10 @@
         top: 10px;
         font-size: 25px;
     }
-    
-    .mobile-logout{
+    .mobile-logout {
         display: block !important;
     }
-    .mobile-bottom-menu{
+    .mobile-bottom-menu {
         display: block;
     }
     .main-nav .navbar-icons {
@@ -320,7 +315,7 @@
         top: auto;
         bottom: 44px;
     }
-    .account-el svg{
+    .account-el svg {
         color: #36e;
     }
     .account-el a {
@@ -400,7 +395,6 @@
     .strong.my-5.title.faq {
         font-size: 24px;
     }
-    
     .blog-popular {
         padding: 30px 10px;
     }
@@ -427,9 +421,9 @@
         padding: 20px;
     }
     .package-details .owl-carousel .owl-item img {
-        height: 200px;
+        height: 220px;
     }
-    .package-header{
+    .package-header {
         flex-direction: column;
     }
     .p-short-info {
@@ -444,7 +438,6 @@
     .p-review-input {
         padding: 25px 15px;
     }
-
     .package-details .package-info {
         flex-direction: column;
     }

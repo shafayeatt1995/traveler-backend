@@ -6,6 +6,7 @@ Version : 1.0
 Created : 
 Last update : 
 ================= */
+
 /* CSS Index 
 -----------------------------------
 1. Global CSS
@@ -32,10 +33,12 @@ Last update :
 22. Dashboard
 
 */
+
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 /*====================
     1. Global CSS
 ======================*/
+
 * {
   margin: 0;
   padding: 0;
@@ -162,38 +165,42 @@ body {
   padding-bottom: 100px;
 }
 
-.h-350{
+.h-350 {
   height: 350px;
 }
 
-.h-250{
+.h-250 {
   height: 250px !important;
 }
-.translatex-100{
+
+.translatex-100 {
   transform: translateX(100%);
 }
 
-.border-2{
+.border-2 {
   border: 2px solid #ddd;
 }
 
-.disabled{
+.disabled {
   cursor: not-allowed !important;
 }
 
 /* Width */
+
 ::-webkit-scrollbar {
-	width: 10px;
+  width: 10px;
 }
 
 /* Track */
+
 ::-webkit-scrollbar-track {
-	background: #f1f1f1;
+  background: #f1f1f1;
 }
 
 /* Handle */
+
 ::-webkit-scrollbar-thumb {
-	background: linear-gradient(to top, #36e, #6fb1fc, #36e);
+  background: linear-gradient(to top, #36e, #6fb1fc, #36e);
 }
 
 p {
@@ -210,22 +217,12 @@ h2 {
   color: #333333;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
 }
 
-.my-form input[type=text],
-.my-form input[type=email],
-.my-form input[type=date],
-.my-form input[type=number],
-.my-form input[type=tel],
-.my-form select {
+.my-form input[type=text], .my-form input[type=email], .my-form input[type=date], .my-form input[type=number], .my-form input[type=tel], .my-form select {
   padding: 8px 15px;
   display: block;
   width: 100%;
@@ -248,14 +245,12 @@ input:focus {
   box-shadow: none;
 }
 
-[type=radio]:checked,
-[type=radio]:not(:checked) {
+[type=radio]:checked, [type=radio]:not(:checked) {
   position: absolute;
   left: -9999px;
 }
 
-[type=radio]:checked + label,
-[type=radio]:not(:checked) + label {
+[type=radio]:checked+label, [type=radio]:not(:checked)+label {
   position: relative;
   padding-left: 28px;
   cursor: pointer;
@@ -264,8 +259,7 @@ input:focus {
   color: #36e;
 }
 
-[type=radio]:checked + label:before,
-[type=radio]:not(:checked) + label:before {
+[type=radio]:checked+label:before, [type=radio]:not(:checked)+label:before {
   content: "";
   position: absolute;
   left: 0;
@@ -277,8 +271,7 @@ input:focus {
   background: #fff;
 }
 
-[type=radio]:checked + label:after,
-[type=radio]:not(:checked) + label:after {
+[type=radio]:checked+label:after, [type=radio]:not(:checked)+label:after {
   content: "";
   width: 10px;
   height: 10px;
@@ -290,12 +283,12 @@ input:focus {
   transition: .3s;
 }
 
-[type=radio]:not(:checked) + label:after {
+[type=radio]:not(:checked)+label:after {
   opacity: 0;
   transform: scale(0);
 }
 
-[type=radio]:checked + label:after {
+[type=radio]:checked+label:after {
   opacity: 1;
   transform: scale(1);
 }
@@ -312,6 +305,7 @@ input[type=submit] {
   transition: .3s;
   margin-bottom: 0;
 }
+
 input[type=submit]:hover {
   background: #36e;
 }
@@ -331,6 +325,7 @@ input[type=submit]:focus {
   color: #333333;
   float: right;
 }
+
 .form-select.package-options option {
   font-weight: bold;
   font-size: 15px;
@@ -338,6 +333,7 @@ input[type=submit]:focus {
   color: #333333;
   text-transform: capitalize;
 }
+
 .form-select.package-options:focus {
   box-shadow: none;
   border: 2px solid #36e;
@@ -347,11 +343,12 @@ input[type=submit]:focus {
   border: 1px solid #ddd;
   border-radius: 5px 0 0 5px;
 }
+
 .input-group.search-box input:focus {
   box-shadow: none;
 }
-.input-group.search-box button,
-.input-group.search-box a {
+
+.input-group.search-box button, .input-group.search-box a {
   color: #fff;
   padding: 13px 0;
   border: none;
@@ -361,23 +358,18 @@ input[type=submit]:focus {
   font-size: 20px;
   text-align: center;
 }
+
 .input-group.search-box button:focus {
   box-shadow: none;
 }
 
-ol,
-ul {
+ol, ul {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-table tbody tr td,
-table tbody tr th,
-table thead tr td,
-table thead tr th,
-table tfoot tr td,
-table tfoot tr th {
+table tbody tr td, table tbody tr th, table thead tr td, table thead tr th, table tfoot tr td, table tfoot tr th {
   border: 1px solid #eee;
   padding: 10px;
 }
@@ -444,14 +436,14 @@ table tfoot tr th {
   box-shadow: none;
 }
 
-.btn-base-color{
+.btn-base-color {
   color: #fff;
   background-color: #36e;
   border-color: #36e;
   transition: .3s;
 }
 
-.btn-base-color:hover{
+.btn-base-color:hover {
   color: #fff !important;
   background-color: #06c;
   border-color: #06c;
@@ -461,24 +453,28 @@ a {
   text-decoration: none !important;
 }
 
-.mh-100-px{
+.mh-100-px {
   max-height: 100px;
 }
 
-.min-h-100{
+.min-h-100 {
   min-height: 100%;
 }
 
-.mh-200{
+.mh-200 {
   max-height: 200px;
 }
 
-.mh-240{
+.mh-240 {
   max-height: 240px;
 }
 
-.pointer{
+.pointer {
   cursor: pointer !important;
+}
+
+.bb-2 {
+  border-bottom: 2px solid #ddd !important;
 }
 
 .section-head.head-left {
@@ -501,8 +497,8 @@ a {
   color: #36e;
   position: relative;
 }
-.section-head h5:after,
-.title:after {
+
+.section-head h5:after, .title:after {
   position: absolute;
   content: "";
   background: #ddd;
@@ -513,8 +509,7 @@ a {
   z-index: 1;
 }
 
-.section-head h5:before,
-.title:before {
+.section-head h5:before, .title:before {
   position: absolute;
   content: "";
   background: #36e;
@@ -528,10 +523,12 @@ a {
   z-index: 2;
   transform: rotate(45deg);
 }
-.title{
+
+.title {
   display: inline-block;
   position: relative;
 }
+
 .title:after {
   top: 55px !important;
 }
@@ -576,29 +573,27 @@ a {
   transition: .3s;
   margin: 0 5px;
   border-radius: 3px;
-} 
+}
 
-.destinations-left,
-.destinations-right {
+.destinations-left, .destinations-right {
   margin-left: 0;
 }
 
-.destinations-left .owl-stage-outer,
-.destinations-right .owl-stage-outer {
+.destinations-left .owl-stage-outer, .destinations-right .owl-stage-outer {
   padding: 0;
 }
 
-.owl-theme .owl-nav.disabled + .owl-dots {
+.owl-theme .owl-nav.disabled+.owl-dots {
   margin-top: -35px !important;
   position: absolute;
   width: 100%;
 }
 
-.review-slider .owl-nav.disabled + .owl-dots {
+.review-slider .owl-nav.disabled+.owl-dots {
   margin-top: -10px !important;
 }
 
-.owl-theme .owl-dots .owl-dot span{
+.owl-theme .owl-dots .owl-dot span {
   width: 0 !important;
   height: 0 !important;
   margin: 0 !important;
@@ -683,6 +678,7 @@ a {
   background-color: #ffaa88 !important;
   border-color: #ffaa88 !important;
 }
+
 .f-pagination {
   display: flex;
   justify-content: center;
@@ -725,8 +721,7 @@ a {
   border-color: #36e;
 }
 
-.f-pagination .page-item:first-child .page-link,
-.f-pagination .page-item:last-child .page-link {
+.f-pagination .page-item:first-child .page-link, .f-pagination .page-item:last-child .page-link {
   border-radius: 50% !important;
 }
 
@@ -735,71 +730,84 @@ a {
   box-shadow: 0 0 0 0.25rem rgb(51 102 238 / 50%);
 }
 
-.mx-calendar-content .cell.active{
+.mx-calendar-content .cell.active {
   background-color: #36e !important;
 }
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .3s;
 }
-.fade-enter, .fade-leave-active {
+
+.fade-enter, .fade-leave-active, .fade-long-enter, .fade-long-leave-active {
   opacity: 0;
 }
 
+.fade-long-enter-active, .fade-long-leave-active {
+  transition: opacity 1s;
+}
+
 .slide-enter-active, .slide-leave-active {
-    transition: 0.5s;
+  transition: 0.5s;
 }
 
 .slide-enter-to, .slide-leave {
-    max-height: 200px;
-    overflow: hidden;
+  max-height: 200px;
+  overflow: hidden;
 }
 
 .slide-enter, .slide-leave-to {
-    overflow: hidden;
-    max-height: 0;
+  overflow: hidden;
+  max-height: 0;
 }
 
 .long-slide-enter-active, .long-slide-leave-active {
-    transition: 0.5s;
+  transition: 0.5s;
 }
 
 .long-slide-enter-to, .long-slide-leave {
-    max-height: 500px;
-    overflow: hidden;
+  max-height: 500px;
+  overflow: hidden;
 }
 
 .long-slide-enter, .long-slide-leave-to {
-    overflow: hidden;
-    max-height: 0;
+  overflow: hidden;
+  max-height: 0;
 }
 
 .slideLeft-enter-active, .slideLeft-leave-enter {
-    transform: translateX(0);
-    transition: .3s linear;
+  transform: translateX(0);
+  transition: .3s linear;
 }
 
 .slideLeft-enter-to, .slideLeft-leave {
-    max-width: 100%;
-    overflow: hidden;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .slideLeft-enter, .slideLeft-leave-to {
-    transform: translateX(100%);
+  transform: translateX(100%);
 }
 
 .slideRight-enter-active, .slideRight-leave-enter {
-    transform: translateX(0);
-    transition: .3s linear;
+  transform: translateX(0);
+  transition: .3s linear;
 }
 
 .slideRight-enter-to, .slideRight-leave {
-    max-width: 100%;
-    overflow: hidden;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .slideRight-enter, .slideRight-leave-to {
-    transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+.package-thumb img.isLoading, .blog-img img.isLoading, .package-slider-wrap img.isLoading{
+  object-fit: none;
+}
+
+.package-thumb img.isLoaded, .blog-img img.isLoaded, .package-slider-wrap img.isLoaded{
+  object-fit: cover;
 }
 
 .form-control {
@@ -816,7 +824,7 @@ a {
   border-color: #36e !important;
 }
 
-.mx-time-column .mx-time-item.active{
+.mx-time-column .mx-time-item.active {
   color: #36e !important;
 }
 
@@ -829,23 +837,23 @@ select option:checked, select option:hover, select option:active, select option:
   color: #fff !important;
 }
 
-.border-none{
+.border-none {
   border: 0 solid transparent !important;
 }
 
-.border-none td{
+.border-none td {
   border: 0 solid transparent !important;
 }
 
-.mw-200{
+.mw-200 {
   max-width: 200px;
 }
 
-.color-black{
+.color-black {
   color: #333;
 }
 
-.color-white{
+.color-white {
   color: #fff;
 }
 
@@ -880,54 +888,64 @@ select option:checked, select option:hover, select option:active, select option:
 }
 
 @-webkit-keyframes sk-stretchdelay {
-  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
-  20% { -webkit-transform: scaleY(1.0) }
+  0%, 40%, 100% {
+    -webkit-transform: scaleY(0.4)
+  }
+  20% {
+    -webkit-transform: scaleY(1.0)
+  }
 }
 
 @keyframes sk-stretchdelay {
-  0%, 40%, 100% { 
+  0%, 40%, 100% {
     transform: scaleY(0.4);
     -webkit-transform: scaleY(0.4);
-  }  20% { 
+  }
+  20% {
     transform: scaleY(1.0);
     -webkit-transform: scaleY(1.0);
   }
 }
+
 /* =============================
        Global CSS end
 ==============================*/
+
 /* =============================
        2. Topbar area start
 ==============================*/
+
 .topbar-area {
   background: #36e;
 }
-.topbar-contact-left,
-.topbar-contact-right {
+
+.topbar-contact-left, .topbar-contact-right {
   height: 100%;
 }
-.topbar-contact-left ul,
-.topbar-contact-right ul {
+
+.topbar-contact-left ul, .topbar-contact-right ul {
   display: flex;
   height: 100%;
   align-items: center;
 }
-.topbar-contact-left ul li,
-.topbar-contact-right ul li {
+
+.topbar-contact-left ul li, .topbar-contact-right ul li {
   font-size: 15px;
   color: #FFFFFF;
   margin-left: 15px;
   display: flex;
   align-items: center;
 }
-.topbar-contact-left ul li a,
-.topbar-contact-right ul li a {
+
+.topbar-contact-left ul li a, .topbar-contact-right ul li a {
   padding: 8px 15px;
   color: #fff;
 }
+
 .topbar-contact-right a:hover {
   background: #06c;
 }
+
 .topbar-area .topbar-social {
   text-align: center;
   height: 100%;
@@ -935,10 +953,12 @@ select option:checked, select option:hover, select option:active, select option:
   justify-content: center;
   align-items: center;
 }
+
 .topbar-area .topbar-social ul {
   display: flex;
   justify-content: center;
 }
+
 .topbar-area .topbar-social ul li a {
   color: #36e;
   margin: 0 12px;
@@ -949,29 +969,37 @@ select option:checked, select option:hover, select option:active, select option:
   margin-top: 40px;
   display: none;
 }
+
 .sidebar-single-contact {
   color: #fff;
   margin: 18px 0;
   display: flex;
 }
+
 .sidebar-single-contact a {
   color: #fff !important;
 }
+
 .sidebar-single-contact i {
   margin-right: 8px;
 }
+
 .sidebar-single-contact i::before {
   vertical-align: middle;
 }
+
 .active-account {
   background: #ffcfcf;
 }
+
 /* =============================
     Topbar area end
 ==============================*/
+
 /* =============================
     3. Navbar area start
 ==============================*/
+
 .header-area {
   box-shadow: 0 2px 28px 0 rgb(0 0 0 / 10%);
 }
@@ -996,25 +1024,30 @@ select option:checked, select option:hover, select option:active, select option:
   transition: .3s;
   box-shadow: 7px 10px 40px 0px #0D344F1A;
 }
+
 .header-area .account-dropdown ul {
   list-style: none;
   display: flex;
   flex-direction: column;
 }
+
 .account-el {
   display: flex;
   align-items: center;
   padding: 6px 0;
   border-bottom: 1px solid #ddd;
 }
+
 .account-el:last-child {
   border-bottom: none;
 }
+
 .account-el svg {
   font-size: 20px;
   color: #36e;
   margin-right: 8px;
 }
+
 .account-el a {
   color: #333333 !important;
   font-weight: bold;
@@ -1037,6 +1070,7 @@ select option:checked, select option:hover, select option:active, select option:
   transition: .3s;
   z-index: 999;
 }
+
 .main-searchbar input {
   max-width: 700px;
   padding: 5px 30px;
@@ -1048,11 +1082,13 @@ select option:checked, select option:hover, select option:active, select option:
   border: 0;
   width: 100%;
 }
+
 .searchbar-close {
   position: absolute;
   top: 30px;
   right: 30px;
 }
+
 .searchbar-close svg {
   font-size: 45px;
   color: #fff;
@@ -1063,6 +1099,7 @@ select option:checked, select option:hover, select option:active, select option:
   height: 50px;
   width: 50px !important;
 }
+
 .searchbar-icon button, .searchbar-icon a {
   height: 55px;
   background: #36e;
@@ -1073,6 +1110,7 @@ select option:checked, select option:hover, select option:active, select option:
   border-radius: 0 30px 30px 0;
   border: none;
 }
+
 .searchbar-icon svg {
   font-size: 32px;
   cursor: pointer;
@@ -1091,6 +1129,7 @@ select option:checked, select option:hover, select option:active, select option:
   height: 100%;
   align-items: center;
 }
+
 .navbar-wrap .navbar-icons {
   display: none;
 }
@@ -1101,34 +1140,40 @@ select option:checked, select option:hover, select option:active, select option:
   justify-content: flex-end;
   transition: .3s;
 }
+
 .main-nav .navbar-icons {
   display: none;
 }
+
 .main-nav .navbar-icons {
   margin-left: 55px;
   display: flex;
   align-items: center;
 }
+
 .main-nav .navbar-icons .searchbar-open {
   color: #36e;
   margin-right: 30px;
 }
+
 .user-dropdown-icon {
   color: #36e;
   position: relative;
 }
- .navbar-icons svg,
- .account-el svg{
+
+.navbar-icons svg, .account-el svg {
   color: #36e;
   font-size: 20px;
   cursor: pointer;
   position: relative;
   z-index: 2;
 }
-.menu-close-btn{
+
+.menu-close-btn {
   display: none;
   z-index: 99;
 }
+
 .main-nav ul {
   margin: 0;
   list-style: none;
@@ -1151,6 +1196,7 @@ select option:checked, select option:hover, select option:active, select option:
   padding: 35px 0;
   position: relative;
 }
+
 .main-nav ul li a:hover {
   color: #36e;
 }
@@ -1176,8 +1222,7 @@ select option:checked, select option:hover, select option:active, select option:
   opacity: 0;
 }
 
-.menu-dropdown-icon svg,
-.mobile-menu-dropdown-icon svg {
+.menu-dropdown-icon svg, .mobile-menu-dropdown-icon svg {
   margin-left: 5px;
   transform: rotate(0deg);
   transition: .3s;
@@ -1221,7 +1266,7 @@ select option:checked, select option:hover, select option:active, select option:
 }
 
 .click-to-top {
-	background: rgba(0, 0, 0, 0) radial-gradient(#6fb1fc, #36e);
+  background: rgba(0, 0, 0, 0) radial-gradient(#6fb1fc, #36e);
   border: 2px solid #fff;
   color: #fff;
   position: fixed;
@@ -1235,10 +1280,12 @@ select option:checked, select option:hover, select option:active, select option:
   justify-content: center;
   z-index: 99;
 }
+
 .mobile-menu {
   display: none;
   position: relative;
 }
+
 .mobile-menu p {
   background: #36e;
   height: 3px;
@@ -1264,7 +1311,9 @@ select option:checked, select option:hover, select option:active, select option:
   top: 0;
   right: 0;
 }
+
 /*===== Main Menu CSS =====*/
+
 .bottombar {
   background-color: #08509e;
 }
@@ -1298,7 +1347,7 @@ select option:checked, select option:hover, select option:active, select option:
   border-bottom: 1px solid #ddd;
 }
 
-.mobile-logout{
+.mobile-logout {
   display: none !important;
 }
 
@@ -1331,8 +1380,7 @@ select option:checked, select option:hover, select option:active, select option:
   line-height: 35px;
 }
 
-.mobile-sub-menu,
-.mobile-bottom-menu {
+.mobile-sub-menu, .mobile-bottom-menu {
   display: none;
 }
 
@@ -1350,21 +1398,26 @@ select option:checked, select option:hover, select option:active, select option:
 /* =============================
       Navbar area end 
 ==============================*/
+
 /* =============================
     4. Main banner area start
 ==============================*/
+
 .banner-slider .owl-nav button.owl-next {
   right: 20px;
   top: 50%;
 }
+
 .banner-slider .owl-nav button.owl-prev {
   left: 20px;
   top: 50%;
 }
+
 .banner-slider .owl-nav button {
   position: absolute;
   transform: translateY(-50%);
 }
+
 .banner-slider .owl-nav button span {
   height: 40px;
   width: 40px;
@@ -1380,6 +1433,7 @@ select option:checked, select option:hover, select option:active, select option:
 .main-banner {
   overflow: hidden;
 }
+
 .slider-item {
   display: flex;
   width: 100%;
@@ -1388,9 +1442,11 @@ select option:checked, select option:hover, select option:active, select option:
   background-size: cover !important;
   background-position: center !important;
 }
+
 .slider-content {
   margin-left: 15%;
 }
+
 .slider-content h2 {
   max-width: 60%;
   font-style: normal;
@@ -1399,6 +1455,7 @@ select option:checked, select option:hover, select option:active, select option:
   line-height: 60px;
   color: #fff;
 }
+
 .slider-content h5 {
   font-weight: bold;
   font-size: 30px;
@@ -1420,17 +1477,21 @@ select option:checked, select option:hover, select option:active, select option:
 .breadcrumb-wrap h2 {
   color: #fff;
 }
+
 /* =============================
      Main banner area end
 ==============================*/
+
 /* =============================
      5. Find Form Area Start
 ==============================*/
+
 .find-form {
   position: relative;
   z-index: 10;
   margin-top: -70px;
 }
+
 .findfrom-wrapper {
   background: rgba(48, 79, 71, 0.9);
   padding: 45px 45px;
@@ -1439,20 +1500,23 @@ select option:checked, select option:hover, select option:active, select option:
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
 }
+
 .find-btn a {
   text-align: center;
   display: block;
   padding: 13px 0;
 }
+
 .find-btn a i {
   font-size: 20px;
 }
+
 .find-btn a i::before {
   vertical-align: middle;
   margin-right: 10px;
 }
-.findfrom-wrapper input,
-.findfrom-wrapper select {
+
+.findfrom-wrapper input, .findfrom-wrapper select {
   font-weight: bold;
   font-size: 13px;
   line-height: 16px;
@@ -1460,30 +1524,30 @@ select option:checked, select option:hover, select option:active, select option:
   height: 50px;
   width: 100%;
 }
-.findfrom-wrapper input:focus, 
-.findfrom-wrapper select:focus {
+
+.findfrom-wrapper input:focus, .findfrom-wrapper select:focus {
   box-shadow: none;
 }
-.findfrom-wrapper input option,
-.findfrom-wrapper select option {
+
+.findfrom-wrapper input option, .findfrom-wrapper select option {
   font-weight: bold;
   font-size: 13px;
   line-height: 16px;
   color: #333333;
 }
-.findfrom-wrapper input,
-.findfrom-wrapper input[type=date] {
+
+.findfrom-wrapper input, .findfrom-wrapper input[type=date] {
   border: none;
 }
-.findfrom-wrapper input::placeholder,
-.findfrom-wrapper input[type=date]::placeholder {
+
+.findfrom-wrapper input::placeholder, .findfrom-wrapper input[type=date]::placeholder {
   font-weight: bold;
   font-size: 13px;
   line-height: 16px;
   color: #333333;
 }
-.findfrom-wrapper input:focus,
-.findfrom-wrapper input[type=date]:focus {
+
+.findfrom-wrapper input:focus, .findfrom-wrapper input[type=date]:focus {
   border: none;
   box-shadow: none;
 }
@@ -1493,6 +1557,7 @@ select option:checked, select option:hover, select option:active, select option:
   z-index: 10;
   margin-top: 80px;
 }
+
 .find-form-2 .findfrom-wrapper {
   background: rgba(255, 255, 255, 0.7);
   box-shadow: 0px 32px 64px rgba(0, 0, 0, 0.1);
@@ -1501,94 +1566,108 @@ select option:checked, select option:hover, select option:active, select option:
   max-width: 980px;
   margin: 0 auto;
 }
+
 .find-form-2 .findfrom-wrapper .find-btn a {
   text-align: center;
   display: block;
   padding: 13px 0;
 }
+
 .find-form-2 .findfrom-wrapper .find-btn a i {
   font-size: 20px;
 }
+
 .find-form-2 .findfrom-wrapper .find-btn a i::before {
   vertical-align: middle;
   margin-right: 10px;
 }
+
 .find-form-2 .findfrom-wrapper input, .find-form-2 .findfrom-wrapper select {
   font-weight: bold;
   font-size: 13px;
   line-height: 16px;
   color: #333333;
 }
+
 .find-form-2 .findfrom-wrapper input:focus, .find-form-2 .findfrom-wrapper select:focus {
   box-shadow: none;
 }
+
 .find-form-2 .findfrom-wrapper input option, .find-form-2 .findfrom-wrapper select option {
   font-weight: bold;
   font-size: 13px;
   line-height: 16px;
   color: #333333;
 }
-.find-form-2 .findfrom-wrapper input,
-.find-form-2 .findfrom-wrapper input[type=date] {
+
+.find-form-2 .findfrom-wrapper input, .find-form-2 .findfrom-wrapper input[type=date] {
   border: none;
 }
-.find-form-2 .findfrom-wrapper input::placeholder,
-.find-form-2 .findfrom-wrapper input[type=date]::placeholder {
+
+.find-form-2 .findfrom-wrapper input::placeholder, .find-form-2 .findfrom-wrapper input[type=date]::placeholder {
   font-weight: bold;
   font-size: 13px;
   line-height: 16px;
   color: #333333;
 }
-.find-form-2 .findfrom-wrapper input:focus,
-.find-form-2 .findfrom-wrapper input[type=date]:focus {
+
+.find-form-2 .findfrom-wrapper input:focus, .find-form-2 .findfrom-wrapper input[type=date]:focus {
   border: none;
   box-shadow: none;
 }
 
-.findfrom-wrapper input,
-.findfrom-wrapper input {
+.findfrom-wrapper input, .findfrom-wrapper input {
   width: 100%;
 }
 
 /* =============================
       Find Form Area end
 =============================-=*/
+
 /* =============================
      6. Package area start
 ==============================*/
+
 .package-card {
   margin: 15px 0;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   min-height: 95%;
 }
+
 .package-card:hover .package-thumb img {
   transform: scale(1.05);
 }
+
 .package-thumb {
   overflow: hidden;
 }
+
 .package-thumb img {
   width: 100%;
   height: 250px;
-  object-fit: cover;
   transition: .3s;
 }
+
 .place-package .package-card .package-thumb img {
   height: 175px !important;
 }
+
 .package-details {
   padding: 20px 15px;
 }
+
 .package-details .package-info {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
 }
-.package-info h4 a{
+
+.package-info h4 a {
   color: #36e;
 }
+
 .package-details .package-info h5 {
   font-style: normal;
   font-weight: bold;
@@ -1596,12 +1675,15 @@ select option:checked, select option:hover, select option:active, select option:
   line-height: 23px;
   color: #333;
 }
+
 .package-details .package-info h5 span {
   font-size: 20px;
 }
+
 .package-details .package-info h5 i {
   margin-right: 5px;
 }
+
 .package-details h4 {
   font-style: normal;
   font-weight: bold;
@@ -1611,22 +1693,27 @@ select option:checked, select option:hover, select option:active, select option:
   text-transform: capitalize;
   padding: 15px 0;
 }
+
 .package-details h4 i {
   color: #36e;
   font-size: 18px;
 }
+
 .package-details h4 a {
   color: #36e;
   display: inline-block;
 }
+
 .package-details .package-rating {
   display: flex;
 }
+
 .package-details .package-rating i {
   font-size: 18px;
   color: #36e;
   margin-right: 5px;
 }
+
 .package-details .package-rating strong {
   font-weight: bold;
   font-size: 13px;
@@ -1634,7 +1721,8 @@ select option:checked, select option:hover, select option:active, select option:
   display: flex;
   align-items: center;
 }
-.ticket-count{
+
+.ticket-count {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
@@ -1644,15 +1732,18 @@ select option:checked, select option:hover, select option:active, select option:
   border-radius: 3px;
   margin-bottom: 20px;
 }
+
 .ticket-count span {
   width: 40px;
   cursor: pointer;
   user-select: none;
   font-size: 25px;
 }
+
 .package-sidebar {
   padding-top: 15px;
 }
+
 .package-details .owl-carousel .owl-item img {
   display: block;
   width: 100%;
@@ -1660,15 +1751,19 @@ select option:checked, select option:hover, select option:active, select option:
   object-position: center;
   object-fit: cover;
 }
+
 /* =============================
       Package area end
 ==============================*/
+
 /* =============================
     7. Destinations area start
 ==============================*/
+
 .destinations-right .owl-nav button {
   position: absolute;
 }
+
 .destinations-right .owl-nav button span {
   text-align: center;
   color: #fff;
@@ -1681,10 +1776,12 @@ select option:checked, select option:hover, select option:active, select option:
   margin: 0;
   display: inline-block;
 }
+
 .destinations-right .owl-nav button.owl-prev {
   top: 18%;
   right: -16%;
 }
+
 .destinations-right .owl-nav button.owl-next {
   top: 18%;
   right: -25%;
@@ -1693,6 +1790,7 @@ select option:checked, select option:hover, select option:active, select option:
 .destinations-left .owl-nav button {
   position: absolute;
 }
+
 .destinations-left .owl-nav button span {
   font-size: 28px;
   line-height: 23px;
@@ -1705,16 +1803,18 @@ select option:checked, select option:hover, select option:active, select option:
   margin: 0;
   display: inline-block;
 }
+
 .destinations-left .owl-nav button.owl-prev {
   top: 18%;
   left: -27%;
 }
+
 .destinations-left .owl-nav button.owl-next {
   top: 18%;
   left: -17%;
 }
 
-.owl-theme .owl-nav [class*='owl-']:hover{
+.owl-theme .owl-nav [class*='owl-']:hover {
   background: transparent !important;
 }
 
@@ -1723,11 +1823,12 @@ select option:checked, select option:hover, select option:active, select option:
   margin-top: 20px;
   display: flex;
 }
+
 .package-slider-wrap img {
   height: 365px;
   width: 100%;
-  object-fit: cover;
 }
+
 .package-slider-wrap .pakage-overlay {
   position: absolute;
   top: 0;
@@ -1739,18 +1840,22 @@ select option:checked, select option:hover, select option:active, select option:
   justify-content: center;
   align-items: center;
 }
+
 .package-slider-wrap .pakage-overlay strong {
   font-weight: bold;
   font-size: 40px;
   line-height: 46px;
   color: #FFFFFF;
 }
+
 /* =============================
     Destinations area start
 ==============================*/
+
 /* =============================
     8. Achievement area start
 ==============================*/
+
 .achievement-area {
   background-repeat: no-repeat;
   background-position: center;
@@ -1772,12 +1877,15 @@ select option:checked, select option:hover, select option:active, select option:
   line-height: 32px;
   color: #FFFFFF;
 }
+
 /* =============================
     achievement area end
 ==============================*/
+
 /* =============================
     9. Review area start
 ==============================*/
+
 .review-card {
   padding: 30px 25px;
   margin: 20px 10px;
@@ -1785,6 +1893,7 @@ select option:checked, select option:hover, select option:active, select option:
   box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
   border-radius: 25px 25px 0px 0px;
 }
+
 .reviewer-img img {
   height: 114px !important;
   width: 114px !important;
@@ -1792,6 +1901,7 @@ select option:checked, select option:hover, select option:active, select option:
   border: 8px solid rgba(48, 79, 71, 0.1);
   margin: 0 auto;
 }
+
 .review-card h3 {
   margin-top: 20px;
   font-weight: bold;
@@ -1800,6 +1910,7 @@ select option:checked, select option:hover, select option:active, select option:
   text-transform: capitalize;
   color: #333333;
 }
+
 .review-card h5 {
   font-weight: 500;
   font-size: 20px;
@@ -1808,9 +1919,11 @@ select option:checked, select option:hover, select option:active, select option:
   color: #a5a5a5;
   margin: 10px 0 22px 0;
 }
+
 .review-card p {
   position: relative;
 }
+
 .review-card p::before {
   position: absolute;
   content: "";
@@ -1827,28 +1940,31 @@ select option:checked, select option:hover, select option:active, select option:
 /* =============================
    11. Blog area start
 ==============================*/
+
 .blog-card {
   margin-top: 30px;
   box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
   border-radius: 0px 0px 3px 3px;
 }
+
 .blog-card:hover .blog-img img {
   transform: scale(1.05);
 }
+
 .blog-img {
   position: relative;
   border-radius: 3px 5px 0 0;
   overflow: hidden;
   height: 250px;
 }
+
 .blog-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   transition: .3s;
 }
-.blog-img .blog-date,
-.blog-img-xl .blog-date {
+
+.blog-img .blog-date, .blog-img-xl .blog-date {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -1864,16 +1980,18 @@ select option:checked, select option:hover, select option:active, select option:
   align-items: center;
   color: #FFFFFF;
 }
+
 .blog-details {
   padding: 25px 20px;
 }
+
 .blog-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.blog-writer,
-.blog-comment {
+
+.blog-writer, .blog-comment {
   display: flex;
   align-items: center;
   font-weight: 500;
@@ -1881,6 +1999,7 @@ select option:checked, select option:hover, select option:active, select option:
   line-height: 17px;
   color: #333333;
 }
+
 .blog-title {
   margin: 20px 0;
   font-weight: bold;
@@ -1890,23 +2009,29 @@ select option:checked, select option:hover, select option:active, select option:
   color: #333333;
   display: inline-block;
 }
+
 .blog-info-xl {
   display: flex;
   justify-content: space-between;
   padding: 0 10px;
 }
+
 .blog-img-xl {
   position: relative;
 }
+
 .blog-info-xl a {
   color: #333;
 }
+
 /* =============================
    Blog area end
 ==============================*/
+
 /* =============================
     13.  Footer area start
 ==============================*/
+
 .footer-links h5 {
   text-transform: capitalize;
   font-style: normal;
@@ -1916,13 +2041,16 @@ select option:checked, select option:hover, select option:active, select option:
   color: #333;
   margin-bottom: 25px;
 }
+
 .contact-box {
   display: flex;
   margin-top: 25px;
 }
+
 .contact-box:first-child {
   margin-top: 0;
 }
+
 .contact-box span {
   float: left;
   width: 34px;
@@ -1931,6 +2059,7 @@ select option:checked, select option:hover, select option:active, select option:
   display: flex;
   align-items: center;
 }
+
 .contact-box a {
   font-size: 15px;
   color: #333;
@@ -1938,6 +2067,7 @@ select option:checked, select option:hover, select option:active, select option:
   display: block;
   font-weight: 500;
 }
+
 .category-list ul li a {
   display: inline-block;
   font-style: normal;
@@ -1948,10 +2078,12 @@ select option:checked, select option:hover, select option:active, select option:
   margin-bottom: 15px;
   text-transform: capitalize;
 }
+
 .footer-info p {
   color: #333;
   margin: 20px 0;
 }
+
 .footer-social-icons h5 {
   margin-bottom: 15px;
   color: #333;
@@ -1959,20 +2091,25 @@ select option:checked, select option:hover, select option:active, select option:
   line-height: 27px;
   font-weight: bold;
 }
+
 .footer-social-icons ul {
   display: flex;
   color: #36e;
   font-size: 25px;
 }
+
 .footer-social-icons ul li {
   margin-right: 20px;
 }
+
 .footer-social-icons ul li:last-child {
   margin-right: 0;
 }
+
 .footer-social-icons ul li a {
   color: #36e;
 }
+
 .footer-subscriber-form input[type="email"] {
   border: 2px solid #36e;
   height: 45px;
@@ -1980,6 +2117,7 @@ select option:checked, select option:hover, select option:active, select option:
   padding: 0 10px;
   width: calc(100% - 125px);
 }
+
 .footer-subscriber-form input[type="submit"] {
   background-color: #36e;
   border: medium none;
@@ -1992,22 +2130,27 @@ select option:checked, select option:hover, select option:active, select option:
   width: 120px;
   transition: .3s;
 }
+
 .footer-subscriber-form input[type="submit"]:hover {
   background-color: #06c;
 }
+
 .footer-bottom {
   background: #36e;
   padding: 15px 0;
 }
+
 .copyrigth-area p {
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
   color: #fff;
 }
+
 .copyrigth-area p a {
   color: #fff;
 }
+
 .copyrigth-area p {
   color: #fff;
 }
@@ -2015,17 +2158,19 @@ select option:checked, select option:hover, select option:active, select option:
 /* =============================
       Footer area end
 ==============================*/
+
 /* =============================
     14. About wrapper start
 ==============================*/
 
-
 /* =============================
      About wrapper end
 ==============================*/
+
 /* =============================
     15. Guide wrapper start
 ==============================*/
+
 .guide-card {
   position: relative;
   margin-top: 20px;
@@ -2036,12 +2181,15 @@ select option:checked, select option:hover, select option:active, select option:
   transition: .3s;
   border: 1px solid #f1f1f1;
 }
+
 .guide-card .guide-thumb {
   border-radius: 10px;
 }
+
 .guide-card .guide-thumb img {
   width: 100%;
 }
+
 .guide-card .guide-info {
   bottom: -50px;
   right: 0;
@@ -2052,26 +2200,31 @@ select option:checked, select option:hover, select option:active, select option:
   background: #fff;
   transition: .3s;
 }
-.guide-card:hover .guide-info{
+
+.guide-card:hover .guide-info {
   bottom: 0;
 }
+
 .guide-card .guide-info strong {
   font-weight: bold;
   font-size: 25px;
   text-transform: capitalize;
   color: #333333;
 }
+
 .guide-card .guide-info p {
   font-size: 20px;
   height: 20px;
   margin-bottom: 20px;
 }
+
 .guide-card .guide-info ul.guide-links {
   margin-top: 10px;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+
 .guide-links li a {
   font-size: 20px;
   padding: 8px 12px;
@@ -2082,25 +2235,31 @@ select option:checked, select option:hover, select option:active, select option:
   display: inline;
   transition: .3s;
 }
+
 .guide-card:hover .guide-links li a {
   background: #ddd;
   color: #333;
 }
+
 .guide-card:hover .guide-links li a:hover {
   background: #36e;
   color: #fff;
 }
+
 /* =============================
      Guide wrapper end
 ==============================*/
+
 /* =============================
      16. Package Page CSS Start
 ==============================*/
+
 .filter {
   padding: 30px 25px;
   background: #fff;
   box-shadow: 0px 0px 64px rgb(0 0 0 / 10%);
 }
+
 .package-filter h5 {
   font-weight: bold;
   font-size: 25px;
@@ -2108,59 +2267,71 @@ select option:checked, select option:hover, select option:active, select option:
   color: #333333;
   margin: 5px 0;
 }
+
 .filter-date .mx-datepicker {
   width: 100%;
   margin-bottom: 30px;
 }
+
 .single-option {
   margin-bottom: 30px;
   display: flex;
   align-items: center;
 }
+
 .single-option:last-child {
   margin-bottom: 0;
 }
+
 .single-option label {
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   color: #A5A5A5;
 }
+
 .sidebar-searchbox {
   padding: 30px 25px;
   background: #FFFFFF;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
 .package-popular {
   border-radius: 10px;
   box-shadow: 0px 0px 64px rgb(0 0 0 / 10%);
   padding: 25px;
 }
+
 .sidebar-duration {
   padding: 30px 25px;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
 .sidebar-categorie {
   padding: 30px 25px;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
 .categorie-head {
   font-size: 25px;
   margin-bottom: 30px;
   font-weight: bold;
 }
+
 .sidebar-banner {
   position: relative;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
 }
+
 .sidebar-banner img {
   width: 100%;
 }
+
 .sidebar-banner-overlay {
   position: absolute;
   top: 0;
@@ -2173,6 +2344,7 @@ select option:checked, select option:hover, select option:active, select option:
   align-items: center;
   padding: 25px;
 }
+
 .sidebar-banner-overlay h3 {
   font-size: 40px;
   line-height: 55px;
@@ -2180,6 +2352,7 @@ select option:checked, select option:hover, select option:active, select option:
   font-weight: bold;
   margin-bottom: 50px;
 }
+
 .sidebar-banner-btn a {
   padding: 14px 35px;
   background: #36e;
@@ -2191,15 +2364,18 @@ select option:checked, select option:hover, select option:active, select option:
   display: inline-block;
   transition: .3s;
 }
+
 .sidebar-banner-btn a:hover {
   background: #36e;
 }
+
 .package-d-head {
   font-weight: bold;
   font-size: 25px;
   color: #333333;
   margin-bottom: 30px;
 }
+
 .p-sidebar-form {
   padding: 30px 25px;
   background: #FFFFFF;
@@ -2207,23 +2383,24 @@ select option:checked, select option:hover, select option:active, select option:
   border-radius: 10px;
   overflow: hidden;
 }
-.p-sidebar-form input,
-.p-sidebar-form textarea, .p-sidebar-form select {
+
+.p-sidebar-form input, .p-sidebar-form textarea, .p-sidebar-form select {
   margin-bottom: 20px;
   border: 1px solid #E1E1E1;
   box-sizing: border-box;
   border-radius: 3px;
   color: #333;
 }
-.p-sidebar-form input::placeholder,
-.p-sidebar-form textarea::placeholder, .p-sidebar-form select::placeholder {
+
+.p-sidebar-form input::placeholder, .p-sidebar-form textarea::placeholder, .p-sidebar-form select::placeholder {
   color: #A5A5A5;
   text-transform: capitalize;
 }
-.p-sidebar-form input:focus,
-.p-sidebar-form textarea:focus, .p-sidebar-form select:focus {
+
+.p-sidebar-form input:focus, .p-sidebar-form textarea:focus, .p-sidebar-form select:focus {
   box-shadow: none;
 }
+
 .p-sidebar-form input[type=submit], .p-sidebar-form button {
   margin-top: 10px;
   width: 100%;
@@ -2241,27 +2418,29 @@ select option:checked, select option:hover, select option:active, select option:
   border: none;
   border-radius: 3px;
 }
+
 .p-sidebar-form input[type=submit]:hover, .p-sidebar-form button:hover {
   background: #333;
 }
+
 .p-sidebar-cards {
   border-radius: 10px;
   padding: 30px 25px;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
 }
+
 .p-sidebar-organizer {
   border-radius: 10px;
   padding: 30px 25px;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
 }
+
 .p-ask-btn {
   margin-top: 40px;
   text-align: center;
 }
-.p-ask-btn a,
-.checkbox-success-cta a,
-.checkbox-success-cta button,
-.payment-submit-btn {
+
+.p-ask-btn a, .checkbox-success-cta a, .checkbox-success-cta button, .payment-submit-btn {
   font-weight: bold;
   font-size: 18px;
   color: #FFFFFF;
@@ -2274,21 +2453,22 @@ select option:checked, select option:hover, select option:active, select option:
   border: none;
   margin: 0 5px;
 }
-.p-ask-btn a:hover,
-.checkbox-success-cta a:hover,
-.checkbox-success-cta button:hover,
-.payment-submit-btn:hover {
+
+.p-ask-btn a:hover, .checkbox-success-cta a:hover, .checkbox-success-cta button:hover, .payment-submit-btn:hover {
   background: #333;
 }
+
 .p-sidebar-banner {
   position: relative;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
 }
+
 .p-sidebar-banner img {
   width: 100%;
 }
+
 .sidebar-banner-overlay {
   position: absolute;
   top: 0;
@@ -2301,6 +2481,7 @@ select option:checked, select option:hover, select option:active, select option:
   align-items: center;
   padding: 25px;
 }
+
 .sidebar-banner-overlay h3 {
   font-size: 40px;
   line-height: 55px;
@@ -2308,6 +2489,7 @@ select option:checked, select option:hover, select option:active, select option:
   font-weight: bold;
   margin-bottom: 50px;
 }
+
 .sidebar-banner-btn a {
   padding: 14px 35px;
   background: #36e;
@@ -2319,6 +2501,7 @@ select option:checked, select option:hover, select option:active, select option:
   display: inline-block;
   transition: .3s;
 }
+
 .sidebar-banner-btn a:hover {
   background: #333;
 }
@@ -2328,72 +2511,88 @@ select option:checked, select option:hover, select option:active, select option:
   align-items: center;
   margin-bottom: 30px;
 }
+
 .package-card-sm:hover .p-sm-img img {
   max-width: 100%;
   transform: scale(1.05);
 }
+
 .package-card-sm:last-child {
   margin-bottom: 0;
 }
+
 .package-card-sm .p-sm-img {
   margin-right: 20px;
   overflow: hidden;
   max-width: 110px;
   border-radius: 10px;
 }
+
 .package-card-sm .p-sm-img img {
   transition: .3s;
   max-width: 100%;
 }
+
 .package-date-sm strong {
   font-weight: bold;
   color: #333333;
   font-size: 12px;
 }
+
 .package-info h3 {
   font-weight: bold;
   font-size: 16px;
   color: #36e;
   margin: 5px 0;
 }
+
 .package-info h3 a {
   color: #36e;
   display: inline-block;
 }
+
 .package-info h5 {
   font-weight: bold;
   font-size: 12px;
   color: #333333;
 }
+
 .package-info h5 span {
   font-size: 18px;
 }
+
 .organizer-img {
   max-width: 135px;
   margin-right: 25px;
 }
+
 .organizer-img img {
   border-radius: 50%;
   width: 100%;
 }
+
 .organizer-info h5 {
   font-weight: bold;
   font-size: 20px;
   color: #333333;
 }
+
 .organizer-info p {
   margin: 10px 0;
   font-size: 15px;
 }
+
 .organizer-rating {
   margin-bottom: 20px;
   display: flex;
 }
+
 .organizer-rating li {
   font-size: 20px;
   color: #36e;
   margin-right: 5px;
 }
+
 .organizer-rating li:last-child {
   margin-right: 0;
 }
@@ -2402,46 +2601,56 @@ select option:checked, select option:hover, select option:active, select option:
   border-radius: 3px;
   width: 100%;
 }
+
 .package-header {
   padding-top: 50px;
   display: flex;
   justify-content: space-between;
 }
+
 .package-title h3 {
   font-weight: bold;
   font-size: 30px;
   color: #333333;
   margin-bottom: 15px;
 }
+
 .package-title strong {
   font-weight: 500;
   color: #A5A5A5;
 }
+
 .pd-status {
   display: flex;
   align-content: stretch;
   flex-direction: column;
   justify-content: center;
 }
+
 .pd-review {
   text-align: right;
 }
+
 .pd-review p {
   font-weight: 500;
   font-size: 13px;
   color: #333333;
 }
+
 .pd-review ul {
   display: flex;
   float: right;
 }
+
 .pd-review ul li {
   color: #36e;
   font-size: 13px;
 }
+
 .nav.nav-pills li {
   margin-top: 20px;
 }
+
 .p-short-info {
   margin: 20px 0;
   padding: 20px 0;
@@ -2450,25 +2659,30 @@ select option:checked, select option:hover, select option:active, select option:
   display: flex;
   justify-content: space-around;
 }
+
 .single-info {
   display: flex;
   align-items: center;
 }
+
 .single-info svg {
   font-size: 28px;
   color: #36e;
   margin-right: 15px;
 }
+
 .info-texts strong {
   font-size: 16px;
   font-weight: bold;
   color: #333333;
 }
+
 .info-texts p {
   font-size: 12px;
   font-weight: bold;
   line-height: 20px;
 }
+
 .nav-link {
   margin-right: 20px;
   border: 2px solid #36e !important;
@@ -2477,72 +2691,88 @@ select option:checked, select option:hover, select option:active, select option:
   font-size: 20px;
   color: #333333;
 }
+
 .nav-link.active {
   background: #36e;
   color: #FFFFFF;
 }
+
 .p-tab-content {
   margin-top: 40px;
 }
+
 .p-overview h5 {
   color: #333333;
   font-weight: bold;
   font-size: 25px;
   margin-bottom: 20px;
 }
+
 .p-overview p {
   text-align: justify;
 }
+
 .p-details-table tr td.table-bottom {
   font-weight: bold;
   font-size: 18px !important;
   color: #333333 !important;
 }
+
 .p-details-table tr td.table-bottom i {
   font-size: 24px;
   color: #36e;
   margin-right: 10px;
 }
+
 .p-details-table tr td:first-child {
   font-weight: bold;
   font-size: 18px;
   color: #333333;
 }
+
 .p-details-table tr td:last-child {
   font-weight: bold;
   font-size: 16px;
   color: #A5A5A5;
 }
+
 .p-details-table tr td:last-child ul.table-list-allow li {
   margin-bottom: 10px;
 }
+
 .table-list-allow li svg {
   color: #36e;
   font-size: 15px;
   font-weight: bold;
 }
+
 .p-details-table tr td:last-child ul.table-list-disallow li {
   margin-bottom: 10px;
 }
+
 .table-list-disallow li svg {
   color: #ff0000;
   font-size: 15px;
   font-weight: bold;
 }
+
 .p-rationg {
   padding: 30px 0;
 }
+
 .p-rationg h5 {
   color: #333333;
   font-weight: bold;
   font-size: 25px;
   margin-bottom: 20px;
 }
+
 .rating-card {
   border: 1px solid #eee;
   border-radius: 10px;
   display: flex;
 }
+
 .r-card-avarag {
   width: 40%;
   background: #f5f5f5;
@@ -2551,95 +2781,116 @@ select option:checked, select option:hover, select option:active, select option:
   justify-content: center;
   align-items: center;
 }
+
 .r-card-avarag h2 {
   font-weight: bold;
   font-size: 60px;
   color: #36e;
 }
+
 .r-card-avarag h5 {
   font-size: 22px;
   margin-top: 10px;
   margin-bottom: 0;
 }
+
 .r-card-info {
   width: 60%;
   padding: 42px 38px;
 }
+
 .r-card-info ul li {
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
 }
+
 .r-card-info ul li:last-child {
   margin-bottom: 0;
 }
+
 .r-card-info ul li strong {
   font-weight: bold;
   font-size: 18px;
 }
+
 .r-card-info ul li ul li {
   color: #36e;
   font-size: 20px;
 }
+
 .p-review-card {
   margin-bottom: 50px;
 }
+
 .p-review-info {
   display: flex;
 }
+
 .p-reviewr-img {
   width: 75px;
   margin-right: 25px;
 }
+
 .p-reviewr-img img {
   border-radius: 50%;
   width: 100%;
   border: 2px solid rgba(48, 79, 71, 0.2);
 }
+
 .p-reviewer-info strong {
   color: #333333;
   font-size: 20px;
   font-weight: bold;
 }
+
 .review-star {
   display: flex;
 }
+
 .review-star li {
   margin-right: 5px;
   color: #36e;
 }
+
 .p-review-texts {
   margin-top: 25px;
   margin-bottom: 15px;
   text-align: justify;
 }
+
 .r-reply-btn {
   font-weight: bold;
   font-size: 15px;
   text-transform: capitalize;
   color: #36e;
 }
+
 .p-review-input {
   padding: 50px;
   background: #FFFFFF;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
 .p-review-input h5 {
   color: #333333;
   font-weight: bold;
   font-size: 25px;
   margin-bottom: 40px;
 }
+
 .input-rating {
   display: flex;
   margin-bottom: 40px;
 }
+
 .input-rating li i {
   font-size: 25px;
   color: #36e;
   margin-right: 5px;
 }
+
 .p-review-input textarea {
   margin-bottom: 40px;
   border: 1px solid #E1E1E1;
@@ -2647,6 +2898,7 @@ select option:checked, select option:hover, select option:active, select option:
   border-radius: 10px;
   color: #333;
 }
+
 .p-review-input input[type=submit] {
   font-weight: bold;
   font-size: 16px;
@@ -2659,24 +2911,30 @@ select option:checked, select option:hover, select option:active, select option:
   border: none;
   border-radius: 5px;
 }
+
 .p-review-input input[type=submit]:hover {
   background: #333;
 }
+
 .p-timeline {
   margin-top: 50px;
 }
+
 .p-timeline li {
   display: flex;
 }
+
 .p-timeline li:last-child .timeline-content {
   padding-bottom: 0;
 }
+
 .p-timeline li .timeline-index {
   height: auto;
   margin-right: 30px;
   position: relative;
   z-index: 12;
 }
+
 .p-timeline li .timeline-index::before {
   position: absolute;
   content: "";
@@ -2689,6 +2947,7 @@ select option:checked, select option:hover, select option:active, select option:
   border: 2px dashed #ddd;
   background-size: cover;
 }
+
 .p-timeline li .timeline-index .index-circle {
   height: 60px;
   width: 60px;
@@ -2700,37 +2959,46 @@ select option:checked, select option:hover, select option:active, select option:
   background: #36e;
   border: 5px solid #CBD3D1;
 }
+
 .p-timeline li .timeline-index h5 {
   color: #fff;
 }
+
 .p-timeline li .timeline-content {
   padding-bottom: 40px;
 }
+
 .p-timeline li .timeline-content strong {
   color: #36e;
   font-size: 18px;
   font-weight: 500;
 }
+
 .p-timeline li .timeline-content p {
   padding: 20px 0;
 }
+
 .p-timeline li .timeline-content ul li {
   font-weight: 600;
   font-size: 16px;
   line-height: 180%;
   color: #ddd;
 }
+
 .p-timeline li .timeline-content ul li i {
   font-size: 18px;
   color: #262339;
   margin-right: 10px;
 }
+
 .p-timeline li .timeline-content ul li i::before {
   vertical-align: middle;
 }
+
 .single-grid-2 img {
   width: 100%;
 }
+
 .remove-wishlist {
   border: none;
   outline: none;
@@ -2738,6 +3006,7 @@ select option:checked, select option:hover, select option:active, select option:
   height: 30px;
   width: 30px;
 }
+
 .single-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2745,17 +3014,16 @@ select option:checked, select option:hover, select option:active, select option:
   grid-gap: 24px;
   grid-template-areas: "g-img-sm-1 g-img-sm-2" "g-img-md g-img-md";
 }
-.single-grid .g-img-sm-1 img,
-.single-grid .g-img-sm-2 img,
-.single-grid .g-img-md img {
+
+.single-grid .g-img-sm-1 img, .single-grid .g-img-sm-2 img, .single-grid .g-img-md img {
   width: 100%;
 }
 
-.p-review-card .review-delete{
+.p-review-card .review-delete {
   display: none;
 }
 
-.p-review-card:hover .review-delete{
+.p-review-card:hover .review-delete {
   display: inline-block;
 }
 
@@ -2770,30 +3038,37 @@ select option:checked, select option:hover, select option:active, select option:
 .g-img-md {
   grid-area: g-img-md;
 }
+
 /* =============================
      Package Page CSS end
 ==============================*/
+
 /* =============================
     17. Blog Page CSS Start
 ==============================*/
+
 .sidebar-searchbox {
   padding: 30px 25px;
   background: #FFFFFF;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
 .right-sidebar-categorie {
   padding: 30px 25px;
   background: #FFFFFF;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
 .right-sidebar-categorie ul li {
   margin-bottom: 27px;
 }
+
 .right-sidebar-categorie ul li:last-child {
   margin-bottom: 0;
 }
+
 .right-sidebar-categorie ul li a {
   font-weight: 500;
   font-size: 18px;
@@ -2802,41 +3077,50 @@ select option:checked, select option:hover, select option:active, select option:
   align-items: center;
   transition: .3s;
 }
+
 .right-sidebar-categorie ul li a i {
   color: #36e;
   font-size: 20px;
   margin-right: 7px;
 }
+
 .right-sidebar-categorie ul li a:hover {
   transform: translateX(6px);
   color: #333333;
 }
+
 .blog-popular {
   padding: 30px 25px;
   background: #FFFFFF;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
 .blog-card-sm {
   display: flex;
   align-items: center;
   margin-bottom: 25px;
 }
+
 .blog-card-sm:last-child {
   margin-bottom: 0;
 }
+
 .blog-card-sm:hover .blog-details-sm a.blog-title-sm {
   color: #333333;
 }
+
 .blog-img-sm img {
   max-width: 110px;
   border-radius: 10px;
 }
+
 .blog-details-sm {
   padding: 5px 0;
   margin-left: 15px;
   width: 100%;
 }
+
 .blog-title-sm {
   font-weight: bold;
   font-size: 20px;
@@ -2846,28 +3130,34 @@ select option:checked, select option:hover, select option:active, select option:
   margin-bottom: 20px;
   transition: .3s;
 }
+
 .blog-info {
   display: flex;
   justify-content: space-between;
 }
+
 .blog-date {
   margin-left: 8px;
 }
+
 .blog-info a {
   font-weight: bold;
   font-size: 12px;
   color: #333333;
 }
+
 .blog-tag {
   padding: 30px 25px;
   background: #FFFFFF;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
+
 .blog-tag ul {
   display: flex;
   flex-wrap: wrap;
 }
+
 .blog-tag ul li a {
   border: 2px solid #E1E1E1;
   border-radius: 10px;
@@ -2880,20 +3170,24 @@ select option:checked, select option:hover, select option:active, select option:
   margin-right: 10px;
   margin-bottom: 10px;
 }
+
 .blog-tag ul li a:hover {
   background: #36e;
   color: #fff;
   border: 2px solid transparent;
 }
+
 .sidebar-banner {
   position: relative;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   overflow: hidden;
 }
+
 .sidebar-banner img {
   width: 100%;
 }
+
 .sidebar-banner-overlay {
   position: absolute;
   top: 0;
@@ -2906,6 +3200,7 @@ select option:checked, select option:hover, select option:active, select option:
   align-items: center;
   padding: 25px;
 }
+
 .sidebar-banner-overlay h3 {
   font-size: 40px;
   line-height: 55px;
@@ -2913,6 +3208,7 @@ select option:checked, select option:hover, select option:active, select option:
   font-weight: bold;
   margin-bottom: 50px;
 }
+
 .sidebar-banner-overlay .sidebar-banner-btn a {
   padding: 16px 32px;
   background: #36e;
@@ -2930,6 +3226,7 @@ select option:checked, select option:hover, select option:active, select option:
   line-height: 44px;
   color: #333333;
 }
+
 .blog-texts img {
   max-width: 100%;
   height: auto;
@@ -2939,14 +3236,17 @@ select option:checked, select option:hover, select option:active, select option:
   padding-bottom: 40px;
   text-align: justify;
 }
+
 .blog-social ul li a {
   font-size: 25px;
   color: #36e;
   margin-left: 18px;
 }
+
 .blog-comments {
   padding: 60px 0;
 }
+
 .blog-comments h5 {
   font-weight: bold;
   font-size: 30px;
@@ -2956,71 +3256,85 @@ select option:checked, select option:hover, select option:active, select option:
   border-bottom: 2px solid #333333;
   display: inline-block;
 }
+
 .replay {
   padding-left: 75px;
 }
+
 .blog-comments ul li {
   margin-top: 50px;
 }
+
 .commentor {
   display: flex;
   align-items: center;
 }
+
 .commentotor-img {
   flex: 3;
   justify-content: center;
 }
+
 .commentor-id {
   flex: 12;
 }
+
 .commentotor-img img {
   border-radius: 50%;
 }
+
 .commentor-id span {
   margin-right: 10px;
 }
+
 .commentor-id strong {
   font-weight: bold;
   font-size: 20px;
   text-transform: capitalize;
 }
+
 .commentor:hover .d-none {
   display: inline-block !important;
 }
+
 .comment {
   padding: 20px 0 12px 0;
 }
+
 .reply-icon {
   font-weight: bold;
   font-size: 15px;
   text-transform: capitalize;
   color: #36e;
 }
+
 .blog-reply {
   background: #FFFFFF;
   box-shadow: 0px 0px 64px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   padding: 50px;
 }
+
 .blog-reply h5 {
   font-weight: bold;
   font-size: 25px;
   color: #333333;
   padding-bottom: 40px;
 }
-.blog-reply input,
-.blog-reply textarea {
+
+.blog-reply input, .blog-reply textarea {
   margin-bottom: 40px;
   border: 1px solid #E1E1E1;
   box-sizing: border-box;
   border-radius: 6px;
   color: #333;
 }
-.blog-reply input::placeholder,
-.blog-reply textarea::placeholder {
+
+.blog-reply input::placeholder, .blog-reply textarea::placeholder {
   color: #A5A5A5;
   text-transform: capitalize;
 }
+
 .blog-reply input[type=submit] {
   font-weight: bold;
   font-size: 16px;
@@ -3033,6 +3347,7 @@ select option:checked, select option:hover, select option:active, select option:
   transition: .3s;
   margin-bottom: 0;
 }
+
 .blog-reply input[type=submit]:hover {
   background: #333;
 }
@@ -3040,9 +3355,11 @@ select option:checked, select option:hover, select option:active, select option:
 /* =============================
     Blog Page CSS end
 ==============================*/
+
 /* =============================
     18. Error page CSS start
 ==============================*/
+
 .error p {
   color: #ddd;
   font-size: 100px;
@@ -3050,8 +3367,7 @@ select option:checked, select option:hover, select option:active, select option:
   padding: 40px 0;
 }
 
-.error button,
-.error a {
+.error button, .error a {
   margin-top: 20px;
   padding: 10px 50px;
   background: #36e;
@@ -3062,8 +3378,7 @@ select option:checked, select option:hover, select option:active, select option:
   font-weight: bold;
 }
 
-.error button:hover,
-.error a:hover {
+.error button:hover, .error a:hover {
   background: #333;
 }
 
@@ -3074,14 +3389,17 @@ select option:checked, select option:hover, select option:active, select option:
 /* =============================
      Error page CSS end
 ==============================*/
+
 /* =============================
    19. FAQ page CSS start
 ==============================*/
+
 .dashboard-faq.faq-item {
   display: grid;
   grid-template-columns: 1fr 20px;
   grid-gap: 5px;
 }
+
 .faq-item {
   display: grid;
   grid-template-columns: 1fr;
@@ -3089,32 +3407,32 @@ select option:checked, select option:hover, select option:active, select option:
 }
 
 .faq-header button {
-    background: #36e;
-    color: #fff;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px 5px 0 0;
-    align-items: center;
-    flex-direction: row;
-    align-content: center;
-    text-align: left;
-  }
-  
+  background: #36e;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px 5px 0 0;
+  align-items: center;
+  flex-direction: row;
+  align-content: center;
+  text-align: left;
+}
+
 .faq-header button svg {
   font-size: 20px;
   transform: rotate(0deg);
   transition: .3s;
 }
 
-.faq-header button.faq-active svg{
+.faq-header button.faq-active svg {
   transform: rotate(180deg);
 }
 
 .faq-body {
-    border: 1px solid #ddd;
+  border: 1px solid #ddd;
 }
 
 .ask-inputs {
@@ -3123,12 +3441,14 @@ select option:checked, select option:hover, select option:active, select option:
   border-radius: 10px;
   padding: 30px;
 }
+
 .ask-inputs h5 {
   font-weight: bold;
   font-size: 25px;
   color: #333333;
   margin-bottom: 30px;
 }
+
 .ask-inputs input, .ask-inputs textarea {
   margin-bottom: 30px;
   border: 1px solid #E1E1E1;
@@ -3136,10 +3456,12 @@ select option:checked, select option:hover, select option:active, select option:
   border-radius: 6px;
   color: #A5A5A5;
 }
+
 .ask-inputs input::placeholder, .ask-inputs textarea::placeholder {
   color: #A5A5A5;
   text-transform: capitalize;
 }
+
 .ask-inputs input[type=submit] {
   margin-top: 15px;
   font-weight: bold;
@@ -3149,9 +3471,11 @@ select option:checked, select option:hover, select option:active, select option:
   background: #36e;
   transition: .3s;
 }
+
 .ask-inputs input[type=submit]:hover {
   background: #36e;
 }
+
 .ask-form {
   background: #fff;
   box-shadow: 0px 0px 64px rgb(0 0 0 / 10%);
@@ -3162,17 +3486,19 @@ select option:checked, select option:hover, select option:active, select option:
 /* =============================
     FAQ page CSS end
 ==============================*/
+
 /* =============================
    20. Gallary Page CSS start
 ==============================*/
 
-
 /* =============================
     Gallary Page CSS end
 ==============================*/
+
 /* =============================
     21. Contact page CSS start
 ==============================*/
+
 .contact-card {
   margin-top: 30px;
   padding: 25px;
@@ -3185,9 +3511,11 @@ select option:checked, select option:hover, select option:active, select option:
   position: relative;
   overflow: hidden;
 }
+
 .contact-card:hover::after {
   background: #36e;
 }
+
 .contact-card::after {
   position: absolute;
   content: "";
@@ -3202,34 +3530,41 @@ select option:checked, select option:hover, select option:active, select option:
   transform: rotate(-45deg);
   transition: .3s;
 }
+
 .contact-icon {
   min-width: 100px;
   position: relative;
   z-index: 10;
 }
+
 .contact-card .contact-info {
   padding: 12px 0;
 }
+
 .contact-card .contact-info h5 {
   font-weight: bold;
   font-size: 28px;
   color: #333333;
   margin-bottom: 10px;
 }
+
 .contact-card .contact-info p {
   font-weight: 500;
   font-size: 20px;
   line-height: 32px;
   color: #A5A5A5;
 }
+
 .contact-icons {
   display: flex;
   flex-wrap: wrap;
   margin-top: 30px;
 }
+
 .contact-icons li {
   margin-right: 20px;
 }
+
 .contact-icons li:last-child {
   margin-right: 0;
 }
@@ -3240,6 +3575,7 @@ select option:checked, select option:hover, select option:active, select option:
   color: #333333;
   margin-bottom: 30px;
 }
+
 .contact-inputs .contact-form input[type=submit] {
   font-weight: bold;
   font-size: 16px;
@@ -3252,6 +3588,7 @@ select option:checked, select option:hover, select option:active, select option:
   transition: .3s;
   margin-bottom: 0;
 }
+
 .contact-inputs .contact-form input[type=submit]:hover {
   background: #36e;
 }
@@ -3259,6 +3596,7 @@ select option:checked, select option:hover, select option:active, select option:
 /* =============================
     Contact page CSS end
 ==============================*/
+
 .form-group .input-field {
   font-size: inherit;
   line-height: inherit;
@@ -3383,118 +3721,111 @@ select option:checked, select option:hover, select option:active, select option:
   font-size: 0.75rem;
 }
 
-
 /* =============================
     Checkout Success page CSS
 ==============================*/
 
 .checkout-success-body-top {
-	display: block;
-	text-align: center;
+  display: block;
+  text-align: center;
 }
 
 .checkout-success-body-top svg {
-	color: #36e;
-	font-size: 150px;
-	margin-bottom: 30px;
+  color: #36e;
+  font-size: 150px;
+  margin-bottom: 30px;
 }
 
 .checkout-success-body-top ul {
-	margin: 20px 0;
+  margin: 20px 0;
 }
 
 .checkout-success-body-top li {
-	border-right: 2px dashed #ddd;
-	display: inline-block;
-	padding: 0 30px;
+  border-right: 2px dashed #ddd;
+  display: inline-block;
+  padding: 0 30px;
 }
 
 .checkout-success-body-top li:last-child {
-	border: none;
+  border: none;
 }
 
 .order-success-ammount span {
-	float: right;
+  float: right;
 }
 
 .order-success-ammount p {
-	padding: 0 10px;
+  padding: 0 10px;
 }
 
 .checkout-success-body-top p {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 .address {
-	border: 2px solid #ddd;
-	padding: 10px;
-	position: relative;
-	min-height: 100%;
+  border: 2px solid #ddd;
+  padding: 10px;
+  position: relative;
+  min-height: 100%;
 }
 
 .address h6 {
-	font-size: 12px;
-	padding: 2px 10px;
-	position: absolute;
-	right: -2px;
-	top: -2px;
+  font-size: 12px;
+  padding: 2px 10px;
+  position: absolute;
+  right: -2px;
+  top: -2px;
 }
 
-.address-name,
-.address-name h3,
-.address-phone,
-.address-email,
-.address-name p {
-	padding-top: 15px;
+.address-name, .address-name h3, .address-phone, .address-email, .address-name p {
+  padding-top: 15px;
 }
 
 .address small {
-	display: block;
-	font-size: 17px;
-	font-weight: bold;
-	line-height: 15px;
+  display: block;
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 15px;
 }
 
 .checkbox-success-cta {
-	margin-top: 30px;
-	text-align: center;
+  margin-top: 30px;
+  text-align: center;
 }
 
 /* =============================
     Login & register page CSS
 ==============================*/
 
-.input-form input[type=text],
-.input-form input[type=email],
-.input-form input[type=password] {
-    display: block;
-    width: 100%;
-    padding: 10px 5px;
-    margin-bottom: 20px;
-    border: 2px solid #ddd;
-    border-radius: 3px;
-    padding: 10px 15px;
-    transition: .3s;
+.input-form input[type=text], .input-form input[type=email], .input-form input[type=password] {
+  display: block;
+  width: 100%;
+  padding: 10px 5px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 3px;
+  padding: 10px 15px;
+  transition: .3s;
 }
 
 .input-form label {
-    position: absolute;
-    color: #555;
-    font-size: 17px;
-    margin-top: 10px;
-    margin-left: 15px;
-    cursor: text;
+  position: absolute;
+  color: #555;
+  font-size: 17px;
+  margin-top: 10px;
+  margin-left: 15px;
+  cursor: text;
 }
 
 .input-form button {
-    background: #36e;
-    color: #fff;
-    border: none;
-    display: block;
-    width: 100%;
-    padding: 10px 0;
-    font-size: 21px;
-    border-radius: 3px;
+  background: #36e;
+  color: #fff;
+  border: none;
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 21px;
+  border-radius: 3px;
 }
 
 .login-checkbox {
@@ -3509,6 +3840,7 @@ select option:checked, select option:hover, select option:active, select option:
 /* =============================
     22. Dashboard start
 ==============================*/
+
 .dashboard-info {
   box-shadow: 0px 0px 30px rgb(0 0 0 / 8%);
   padding: 8px;
@@ -3518,8 +3850,7 @@ select option:checked, select option:hover, select option:active, select option:
   color: #aaa;
 }
 
-.dashboard-info button,
-.dashboard-info a {
+.dashboard-info button, .dashboard-info a {
   border: none;
   outline: none;
   background: transparent;
@@ -3529,8 +3860,7 @@ select option:checked, select option:hover, select option:active, select option:
   display: inline-block;
 }
 
-.dashboard-info button svg,
-.dashboard-info a svg {
+.dashboard-info button svg, .dashboard-info a svg {
   transform: translateY(2px);
 }
 
@@ -3542,6 +3872,7 @@ select option:checked, select option:hover, select option:active, select option:
   border: 2px solid #ddd;
   min-height: 100%;
 }
+
 .dashboard-sidebar.mobile {
   min-height: auto;
   margin-bottom: 40px;
@@ -3562,13 +3893,12 @@ select option:checked, select option:hover, select option:active, select option:
   transition: .3s;
 }
 
-.dashboard-sidebar li a:hover,
-.dashboard-sidebar li a.active {
+.dashboard-sidebar li a:hover, .dashboard-sidebar li a.active {
   background: #ddd;
   border-left: 2px solid #36e;
 }
 
-.dashboard-sidebar li a.active svg{
+.dashboard-sidebar li a.active svg {
   transform: rotate(90deg);
 }
 
@@ -3589,7 +3919,8 @@ select option:checked, select option:hover, select option:active, select option:
 }
 
 .dashboard-content-body.site-setting {
-  border-top: 2px solid #ddd;;
+  border-top: 2px solid #ddd;
+  ;
 }
 
 .add-btn {
@@ -3602,7 +3933,7 @@ select option:checked, select option:hover, select option:active, select option:
   outline: none;
 }
 
-.add-btn:hover{
+.add-btn:hover {
   color: #fff;
   background: #06c;
 }
@@ -3613,24 +3944,23 @@ select option:checked, select option:hover, select option:active, select option:
   border-bottom: 0;
 }
 
-.swal2-popup.swal2-toast .swal2-title{
+.swal2-popup.swal2-toast .swal2-title {
   margin: 0 !important;
 }
 
-.swal2-popup.swal2-toast{
+.swal2-popup.swal2-toast {
   padding: 5px !important;
 }
 
-.swal2-toast-shown .swal2-container{
+.swal2-toast-shown .swal2-container {
   width: 375px !important;
 }
 
-body.swal2-toast-shown .swal2-container.swal2-top-end,
-body.swal2-toast-shown .swal2-container.swal2-top-right{
+body.swal2-toast-shown .swal2-container.swal2-top-end, body.swal2-toast-shown .swal2-container.swal2-top-right {
   right: 18px;
 }
 
-.swal2-styled.swal2-confirm{
+.swal2-styled.swal2-confirm {
   background-color: #36e !important;
 }
 
@@ -3772,6 +4102,7 @@ body.swal2-toast-shown .swal2-container.swal2-top-right{
 .dashboard-border tr:nth-last-child(1) {
   border-bottom: none !important;
 }
+
 .dashboard-border tr {
   border-bottom: 1px solid #ddd !important;
 }
@@ -3779,6 +4110,7 @@ body.swal2-toast-shown .swal2-container.swal2-top-right{
 .swal2-confirm:focus {
   box-shadow: 0 0 0 3px rgb(51 102 238 / 50%) !important;
 }
+
 .swal2-cancel:focus {
   box-shadow: 0 0 0 3px rgb(221 51 51 / 50%) !important;
 }
@@ -3884,6 +4216,7 @@ body.swal2-toast-shown .swal2-container.swal2-top-right{
   grid-gap: 5px;
   justify-content: center;
 }
+
 span.remove-topic {
   background: #ddd;
   height: 25px;
