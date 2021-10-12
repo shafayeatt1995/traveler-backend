@@ -65,7 +65,7 @@ class PageController extends Controller
     
             Image::make($request->image)->save($name);
         } else {
-            $name = $request->oldImage;
+            $name = $request->imgPath;
         }
         $find = Section::where('name', 'header')->first();
 

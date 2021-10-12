@@ -16,9 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 // Auth Required Route list
 Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'], function () {
-    // Account Related Route
-    Route::post('verification/{token}', 'AuthController@verification');
-    Route::post('send-verification-mail', 'AuthController@sendVerificationMail');
 
     // Auth Related Route
     Route::post('login', 'AuthController@login');
@@ -26,15 +23,19 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::post('refresh', 'AuthController@refresh');
     Route::post('user', 'AuthController@user');
     Route::post('register', 'AuthController@register');
-    
+
     // User Related Controller
-    Route::get('users/{role}', 'AuthController@users');
-    Route::post('create-user', 'AuthController@createUser');
-    Route::post('update-user/{user}', 'AuthController@updateUser');
-    Route::post('delete-user/{user}', 'AuthController@deleteUser');
-    Route::post('apply-guide', 'AuthController@applyGuide');
-    Route::post('update-profile', 'AuthController@updateProfile');
-    Route::post('update-password', 'AuthController@updatePassword');
+    Route::get('users/{role}', 'UserController@users');
+    Route::post('create-user', 'UserController@createUser');
+    Route::post('update-user/{user}', 'UserController@updateUser');
+    Route::post('delete-user/{user}', 'UserController@deleteUser');
+    Route::post('apply-guide', 'UserController@applyGuide');
+    Route::post('update-profile', 'UserController@updateProfile');
+    Route::post('update-password', 'UserController@updatePassword');
+
+    // Account Verification Related Route
+    Route::post('verification/{token}', 'UserController@verification');
+    Route::post('send-verification-mail', 'UserController@sendVerificationMail');
 
     // Admin Place Related Route
     Route::get('place', 'PlaceController@index');
@@ -62,14 +63,14 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::post('delete-question/{question}', 'QuestionController@deleteQuestion');
     Route::post('create-replay/{question}', 'QuestionController@createReplay');
     Route::post('delete-replay/{question}', 'QuestionController@deleteReplay');
-    
+
     // Booking Related Route
     Route::get('booking', 'BookingController@index');
     Route::get('get-booking/{id}', 'BookingController@getBooking');
     Route::post('submit-booking', 'BookingController@submitBooking');
     Route::post('update-booking/{booking}', 'BookingController@updateBooking');
     Route::post('partial-payment', 'BookingController@partialPayment');
-    
+
     //Wishlist Related Route
     Route::get('wishlist/{id}', 'WishlistController@getWishlist');
     Route::post('create-wishlist/{id}', 'WishlistController@createWishlist');
@@ -87,12 +88,12 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::post('delete-comment/{comment}', 'CommentController@deleteComment');
     Route::post('create-comment-replay', 'CommentController@createCommentReplay');
     Route::post('delete-comment-replay/{comment_replay}', 'CommentController@deleteCommentReplay');
-    
+
     //Guide Related Route
     Route::get('guide-request', 'GuideController@index');
     Route::post('guide-request-status/{user}', 'GuideController@status');
     Route::get('guides', 'GuideController@guides');
-    
+
     // Custom Page & Section Related Page
     Route::get('edit-page', 'PageController@index');
     Route::post('create-page', 'PageController@createPage');
@@ -107,12 +108,12 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::post('update-about', 'PageController@updateAbout');
     Route::post('update-contact', 'PageController@updateContact');
     Route::post('update-faq', 'PageController@updatefaq');
-    
+
     // Contact Us Page Related Route
     Route::get('get-contact-message', 'ContactMessageController@index');
     Route::post('update-contact-message/{contact_message}', 'ContactMessageController@updateMessage');
     Route::post('delete-contact-message/{contact_message}', 'ContactMessageController@deleteMessage');
-    
+
     // Site Setting Related Route
     Route::get('site-setting', 'SettingController@index');
     Route::post('update-app', 'SettingController@updateApp');
@@ -123,7 +124,7 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
     Route::post('update-mail', 'SettingController@updateMail');
     Route::post('update-icon', 'SettingController@updateIcon');
     Route::post('update-preloader', 'SettingController@updatePreloader');
-    
+
     // Admin Dashboard Related Route
     Route::get('admin-dashboard', 'DashboardController@adminDashboard');
     Route::get('admin-booking-details', 'DashboardController@adminBookingDetails');
@@ -148,7 +149,7 @@ Route::group(['middleware' => 'api', 'namespace' => 'App\Http\Controllers\Api'],
 Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     // Get Site Ready Information
     Route::get('start', 'AppController@start');
-    
+
     // Home Page Route
     Route::get('home', 'AppController@index');
 
@@ -159,10 +160,10 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::get('category-packages/{slug}', 'PackageController@categoryPackages');
     Route::get('destination-package', 'PackageController@destinationPackage');
     Route::post('search-package', 'PackageController@searchPackage');
-    
+
     // Public Tour Package Related Route
     Route::get('package/{slug}', 'PackageController@singlePackage');
-    
+
     // Booking Related Route
     Route::post('check-booking/', 'BookingController@checkBooking');
 
@@ -178,10 +179,10 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::get('about', 'PageController@about');
     Route::get('contact', 'PageController@contact');
     Route::get('faq', 'PageController@faq');
-    
+
     // Send Contact Us Message
     Route::post('submit-message', 'ContactMessageController@submitMessage');
-    
+
     // Forget Password Related Password
     Route::post('forget-password', 'AuthController@forgetPassword');
     Route::get('find-reset-link/{token}', 'AuthController@resetLink');
